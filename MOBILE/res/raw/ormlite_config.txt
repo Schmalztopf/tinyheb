@@ -1,0 +1,49 @@
+#
+# generated on 2016/09/16 03:20:03
+#
+# --table-start--
+dataClass=org.tinyheb.core.Patron
+tableName=Patrons
+# --table-fields-start--
+# --field-start--
+fieldName=id
+columnName=_id
+id=true
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=firstname
+columnName=firstname
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=lastname
+columnName=lastname
+useGetSet=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################
+# --table-start--
+dataClass=org.tinyheb.core.HealthInsurance
+tableName=Insurances
+# --table-fields-start--
+# --field-start--
+fieldName=iknumber
+columnName=_id
+id=true
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=name
+columnName=name
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=shortname
+columnName=shortname
+useGetSet=true
+# --field-end--
+# --table-fields-end--
+# --table-end--
+#################################

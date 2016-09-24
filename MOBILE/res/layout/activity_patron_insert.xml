@@ -1,0 +1,247 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/MainScrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="${relativePackage}.${activityClass}" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:id="@+id/FirstnameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="9dp"
+            android:layout_marginStart="12dp"
+            android:ems="10"
+            android:hint="@string/firstname_hint"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:width="170dp" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/LastnameTextview"
+            android:layout_width="166dp"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/FirstnameTextView"
+            android:layout_toRightOf="@+id/FirstnameTextView"
+            android:ems="10"
+            android:hint="@string/lastname_hint"
+            android:imeOptions="actionNext"
+            android:inputType="text" />
+
+        <RelativeLayout
+            android:id="@+id/AddressLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/AdressInputButton"
+            android:orientation="vertical"
+            android:visibility="gone" >
+
+            <EditText
+                android:id="@+id/StreetTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:ems="10"
+                android:hint="@string/street_input_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/PostalCodeEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/StreetTextView"
+                android:layout_alignStart="@+id/StreetTextView"
+                android:layout_below="@+id/StreetTextView"
+                android:ems="10"
+                android:hint="@string/plz_input_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress|number"
+                android:maxLength="@integer/plz_max_length"
+                android:width="100dp" />
+
+            <EditText
+                android:id="@+id/CityEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/PhoneEditText"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_toEndOf="@+id/PostalCodeEditText"
+                android:layout_toRightOf="@+id/PostalCodeEditText"
+                android:ems="10"
+                android:hint="@string/city_input_hint"
+                android:imeOptions="actionNext"
+                android:inputType="textPostalAddress" />
+
+            <EditText
+                android:id="@+id/PhoneEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/PostalCodeEditText"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignStart="@+id/PostalCodeEditText"
+                android:layout_below="@+id/PostalCodeEditText"
+                android:ems="10"
+                android:hint="@string/phone_input_hint"
+                android:inputType="phone" />
+
+            <EditText
+                android:id="@+id/BirthdayLabelTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/PhoneEditText"
+                android:layout_alignStart="@+id/PhoneEditText"
+                android:layout_below="@+id/PhoneEditText"
+                android:ems="10"
+                android:hint="@string/birthday"
+                android:imeOptions="actionNext"
+                android:inputType="date" />
+
+            <EditText
+                android:id="@+id/DistanceEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/PhoneEditText"
+                android:layout_alignStart="@+id/PhoneEditText"
+                android:layout_below="@+id/BirthdayLabelTextView"
+                android:ems="10"
+                android:hint="@string/distance_hint"
+                android:imeOptions="actionNext"
+                android:inputType="numberDecimal" />
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/InsuranceInputButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/AddressLayout"
+            android:text="@string/InsuranceButtonText" />
+
+        <RelativeLayout
+            android:id="@+id/InsuranceLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/InsuranceInputButton"
+            android:orientation="vertical"
+            android:visibility="visible" >
+
+            <EditText
+                android:id="@+id/IkInsuranceHolderEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:ems="10"
+                android:hint="@string/ik_insurance_holder_hint"
+                android:imeOptions="actionNext"
+                android:inputType="number"
+                android:maxLength="@integer/plz_max_length"
+                android:width="100dp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/IkInsuranceAgencyAutoCompleteTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/IkInsuranceHolderEditText"
+                android:ems="10"
+                android:hint="@string/insurance_hint"
+                android:imeOptions="actionNext"
+                android:inputType="text" />
+
+            <TextView
+                android:id="@+id/InsuranceDataTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/IkInsuranceAgencyAutoCompleteTextView"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:text=""
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+
+            <EditText
+                android:id="@+id/IkInsuranceValidUntilEditText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/InsuranceDataTextView"
+                android:layout_marginTop="10dp"
+                android:ems="10"
+                android:hint="@string/Insurance_valid_until_hint"
+                android:imeOptions="actionNext"
+                android:inputType="date"
+                android:width="150dp" />
+
+            <Spinner
+                android:id="@+id/InsuranceStatusSpinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/InsuranceDataTextView"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toEndOf="@+id/IkInsuranceValidUntilEditText"
+                android:layout_toRightOf="@+id/IkInsuranceValidUntilEditText"
+                android:ems="10"
+                android:entries="@array/insurance_stati"
+                android:hint="@string/insurance_status_hint"
+                android:imeOptions="actionNext" />
+
+        </RelativeLayout>
+
+        <Button
+            android:id="@+id/AdressInputButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/FirstnameTextView"
+            android:text="@string/AddressButtonText" />
+        
+        <Button
+            android:id="@+id/SavePatronButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/InsuranceLayout"
+            android:onClick="savePatron"
+            android:text="@string/save_patron_button_text" />
+
+    </RelativeLayout>
+
+</ScrollView>

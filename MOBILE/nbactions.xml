@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-Deploy to device</actionName>
+            <displayName>Deploy to device</displayName>
+            <goals>
+                <goal>android:deploy</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-Start Emulator Deploy and run</actionName>
+            <displayName>Start Emulator Deploy and run</displayName>
+            <goals>
+                <goal>android:emulator-start</goal>
+                <goal>android:deploy</goal>
+                <goal>android:run</goal>
+            </goals>
+        </action>
+    </actions>
