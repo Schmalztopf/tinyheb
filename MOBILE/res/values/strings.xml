@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TinyhebMobile</string>
+    <string name="title_activity_patron_insert">Frau einfügen</string>
+    <string name="title_activity_master_data">Stammdaten</string>
+    <string name="title_activity_master_data_pager">Stammdaten</string>
+    <string name="main_no_items">Keine Daten vorhanden</string>
+
+    <!-- Labels -->
+    <string name="syncronize">Synchronize</string>
+    <string name="patrons">Kundinnen</string>
+    <string name="insert_patrons">Neue Kundin</string>
+    <string name="birthday">Geburtsdatum</string>
+
+    <!-- Hints -->
+    <string name="firstname_hint">Vorname</string>
+    <string name="lastname_hint">Nachname</string>
+    <string name="insurance_hint">Krankenkasse</string>
+    <string name="Insurance_valid_until_hint">Valid until</string>
+    <string name="insurance_status_hint">status</string>
+    <string name="address_input_hint">Adresse</string>
+    <string name="street_input_hint">Strasse Hausnummer</string>
+    <string name="plz_input_hint">PLZ</string>
+    <string name="city_input_hint">Ort</string>
+    <string name="phone_input_hint">Fon</string>
+    <string name="distance_hint">Entfernung (km)</string>
+    <string name="ik_insurance_holder_hint">IK Versicherte</string>
+    <string name="AddressButtonText">Persönliche Information</string>
+    <string name="InsuranceButtonText">Krankenkasse</string>
+
+    <string-array name="insurance_stati">
+        <item>1 1</item>
+        <item>3 1</item>
+        <item>privat</item>
+        <item>1 9</item>
+        <item>3 9</item>
+        <item>1 7</item>
+        <item>1 8</item>
+        <item>3 8</item>
+        <item>5 1</item>
+        <item>SOZ</item>
+        <item>5 9</item>
+    </string-array>
+        <string name="save_patron_button_text">Fertig</string>
+
+</resources>
