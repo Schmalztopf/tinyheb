@@ -1,19 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <actions>
-        <action>
-            <actionName>CUSTOM-Deploy to device</actionName>
-            <displayName>Deploy to device</displayName>
-            <goals>
-                <goal>android:deploy</goal>
-            </goals>
-        </action>
-        <action>
-            <actionName>CUSTOM-Start Emulator Deploy and run</actionName>
-            <displayName>Start Emulator Deploy and run</displayName>
-            <goals>
-                <goal>android:emulator-start</goal>
-                <goal>android:deploy</goal>
-                <goal>android:run</goal>
-            </goals>
-        </action>
-    </actions>
+    <action>
+        <actionName>CUSTOM-Test</actionName>
+        <displayName>Test</displayName>
+        <goals>
+            <goal>clean</goal>
+            <goal>test-compile</goal>
+            <goal>test</goal> 
+        </goals>
+    </action>
+    <action>
+        <actionName>CUSTOM-Build skip tests</actionName>
+        <displayName>Build skip tests</displayName>
+        <goals>
+            <goal>clean</goal>
+            <goal>install</goal>
+        </goals>
+        <properties>
+            <skipTests>true</skipTests>
+        </properties>
+    </action>
+    <action>
+        <actionName>debug</actionName>
+        <goals>
+            <goal>clean</goal>
+            <goal>package</goal>
+            <goal>android:deploy</goal>
+            <goal>android:run</goal>
+        </goals>
+        <properties>
+            <skipTests>true</skipTests>
+            <android.run.debug>8601</android.run.debug>
+            <jpda.listen>8601</jpda.listen>
+        </properties>
+    </action>
+</actions>
