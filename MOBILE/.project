@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
-	<name>org.tinyheb.mobile</name>
+	<name>MOBILE</name>
 	<comment></comment>
 	<projects>
 	</projects>
@@ -40,17 +40,17 @@
 		<link>
 			<name>AndroidManifest.xml</name>
 			<type>1</type>
-			<locationURI>PROJECT_LOC/src/main/AndroidManifest.xml</locationURI>
+			<locationURI>copy_PROJECT_LOC/src/main/AndroidManifest.xml</locationURI>
 		</link>
 		<link>
 			<name>assets</name>
 			<type>2</type>
-			<locationURI>PROJECT_LOC/src/main/assets</locationURI>
+			<locationURI>copy_PROJECT_LOC/src/main/assets</locationURI>
 		</link>
 		<link>
 			<name>res</name>
 			<type>2</type>
-			<locationURI>PROJECT_LOC/src/main/res</locationURI>
+			<locationURI>copy_PROJECT_LOC/src/main/res</locationURI>
 		</link>
 	</linkedResources>
 	<variableList>
