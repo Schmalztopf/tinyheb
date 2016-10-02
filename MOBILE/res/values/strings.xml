@@ -28,6 +28,12 @@
     <string name="ik_insurance_holder_hint">IK Versicherte</string>
     <string name="AddressButtonText">Persönliche Information</string>
     <string name="InsuranceButtonText">Krankenkasse</string>
+    <string name="ChildBirthInputButtonText">Rund um die Geburt</string>
+
+    <string name="save_patron_button_text">Fertig</string>
+    <string name="calculated_birthdate_text">errechneter Termin</string>
+    <string name="true_birthdate_text">Geburtstermin</string>
+    <string name="time_of_birth_hint">Zeit</string>
 
     <string-array name="insurance_stati">
         <item>1 1</item>
@@ -42,6 +48,17 @@
         <item>SOZ</item>
         <item>5 9</item>
     </string-array>
-        <string name="save_patron_button_text">Fertig</string>
+    <string-array name="number_of_children">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+    </string-array>
+    <string-array name="number_of_children_texts">
+        <item>Einling</item>
+        <item>Zwillinge</item>
+        <item>Drillinge</item>
+        <item>Vierlinge</item>
+    </string-array>
 
 </resources>

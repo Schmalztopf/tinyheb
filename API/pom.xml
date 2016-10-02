@@ -36,7 +36,8 @@
 		<dependency>
 			<groupId>${project.groupId}</groupId>
 			<artifactId>CORE</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
+			<version>0.0.1</version>
+			<scope>compile</scope>
 		</dependency>
 		<dependency>
 			<groupId>javax</groupId>
@@ -89,7 +90,6 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<version>6.0.4</version>
 		</dependency>
-
 	</dependencies>
 
 	<build>

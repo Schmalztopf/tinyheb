@@ -10,6 +10,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.tinyheb.core.TinyhebDataContainer;
 import org.tinyheb.core.HealthInsurance;
 import org.tinyheb.core.MySqlField;
 import org.tinyheb.core.MySqlTable;
@@ -27,7 +28,7 @@ import com.j256.ormlite.table.DatabaseTableConfig;
 @Path("/tinyheb")
 public class PatronService {
 
-    String databaseUrl = "jdbc:mysql://rpi-fs01:3306/PRD_Hebamme?serverTimezone=UTC";
+    String databaseUrl = Constants.dbUrl + "/" + Constants.dbName + "?serverTimezone=UTC";
     ConnectionSource connectionSource;
     Dao<Patron, String> patronDao;
     Dao<HealthInsurance, String> insuranceDao;
@@ -83,12 +84,5 @@ public class PatronService {
 
         DatabaseTableConfig<T> tableconf = new DatabaseTableConfig<T>(objectclass, ormtableannotation.tableName(), fieldConfigs);
         return tableconf;
-
-    }
-
-    public class TinyhebDataContainer {
-
-        public List<Patron> patrons;
-        public List<HealthInsurance> insurances;
     }
 }

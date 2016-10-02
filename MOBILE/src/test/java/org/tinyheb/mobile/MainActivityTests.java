@@ -1,27 +1,19 @@
 package org.tinyheb.mobile;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.ArgumentCaptor;
-import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.times;
 import org.robolectric.Robolectric;
 import org.robolectric.Shadows;
-import org.robolectric.shadows.ShadowActivity;
-import org.tinyheb.data.rest.TinyhebAPICallback;
 import org.tinyheb.data.rest.TinyhebAPIClient;
-import org.tinyheb.data.rest.TinyhebAPICollaborator;
 import org.tinyheb.test.TinyhebTestRunner;
-
-import com.google.common.base.Verify;
 
 import android.content.Intent;
 import android.view.View;

@@ -12,10 +12,12 @@ import org.tinyheb.dialogs.MonthYearPickerDialog;
 
 import android.app.Activity;
 import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -26,6 +28,7 @@ import android.widget.DatePicker;
 import android.widget.Filter;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.TimePicker;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -34,49 +37,37 @@ public class PatronInsertActivity extends Activity {
 
 	private AutoCompleteTextView InsuranceAgencyTextView;
 	private TextView InsuranceAgencyDataTextView;
-	private TextView birthdayTextview;
-	private TextView validUntilTextview;
+	private TextView BirthdayTextview;
+	private TextView ChildBirthdayTextview;
+	private TextView ChildTimeOfBirthTextview;
+	private TextView ValidUntilTextview;
 	private SQLiteDBHelper dbHelper = null;
 	private ArrayList<HealthInsurance> insurances = null;
 	private InsuranceAdapter adapter;
 	private Patron insertPatron;
+	private PatronInsertActivity currentActivity = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_patron_insert);
 
+		Button btnAbort = (Button) findViewById(R.id.btnAbort);
+		btnAbort.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				currentActivity.finish();
+			}
+		});
+		
 		bindInsuranceAgencyAutocompleteData();
 
-		Button AddressInputsBtn = (Button) findViewById(R.id.AdressInputButton);
-		AddressInputsBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				RelativeLayout AddressInputControlView = (RelativeLayout) findViewById(R.id.AddressLayout);
-				if (AddressInputControlView.getVisibility() == View.VISIBLE) {
-					AddressInputControlView.setVisibility(View.GONE);
-				} else {
-					AddressInputControlView.setVisibility(View.VISIBLE);
-				}
-			}
-		});
+		bindLayoutShowHIdeButton(R.id.AdressInputButton, R.id.AddressLayout);
+		bindLayoutShowHIdeButton(R.id.InsuranceInputButton, R.id.InsuranceLayout);
+		bindLayoutShowHIdeButton(R.id.ChildBirthInputButton, R.id.BirthInputLayout);
 
-		Button InsuraceInputsBtn = (Button) findViewById(R.id.InsuranceInputButton);
-		InsuraceInputsBtn.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				RelativeLayout InsuranceInputControlView = (RelativeLayout) findViewById(R.id.InsuranceLayout);
-				if (InsuranceInputControlView.getVisibility() == View.VISIBLE) {
-					InsuranceInputControlView.setVisibility(View.GONE);
-				} else {
-					InsuranceInputControlView.setVisibility(View.VISIBLE);
-				}
-			}
-		});
-
-		birthdayTextview = (TextView) findViewById(R.id.BirthdayLabelTextView);
-		birthdayTextview.setOnClickListener(new View.OnClickListener() {
-
+		BirthdayTextview = (TextView) findViewById(R.id.BirthdayLabelTextView);
+		BirthdayTextview.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
@@ -85,9 +76,8 @@ public class PatronInsertActivity extends Activity {
 						);
 			}
 		});
-
-		validUntilTextview = (TextView) findViewById(R.id.IkInsuranceValidUntilEditText);
-		validUntilTextview.setOnClickListener(new View.OnClickListener() {
+		ValidUntilTextview = (TextView) findViewById(R.id.IkInsuranceValidUntilEditText);
+		ValidUntilTextview.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				MonthYearPickerDialog pd = new MonthYearPickerDialog();
@@ -95,25 +85,78 @@ public class PatronInsertActivity extends Activity {
 				pd.show(getFragmentManager(), "MonthYearPickerDialog");
 			}
 		});
+
+
+		ChildBirthdayTextview = (TextView) findViewById(R.id.ChildBirthLabelTextView);
+		ChildBirthdayTextview.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("Europe/Berlin"));
+				DateDialog(ChildBirthdayDateListener, 
+						cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), cal.get(Calendar.DAY_OF_MONTH)
+						);
+			}
+		});
+
+		ChildTimeOfBirthTextview = (TextView) findViewById(R.id.TimeOfBirthTextView);
+		ChildTimeOfBirthTextview.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				TimeDialog(ChildTimeOfBirthTimeListener, 0, 0);
+			}
+		});
+	}
+
+	private void bindLayoutShowHIdeButton(int adressinputbuttonid, final int addresslayoutid) {
+		Button ShowHideInputBtn = (Button) findViewById(adressinputbuttonid);
+		ShowHideInputBtn.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				RelativeLayout Layout = (RelativeLayout) findViewById(addresslayoutid);
+				if (Layout.getVisibility() == View.VISIBLE) {
+					Layout.setVisibility(View.GONE);
+				} else {
+					Layout.setVisibility(View.VISIBLE);
+				}
+			}
+		});
 	}
 
 	public void DateDialog(DatePickerDialog.OnDateSetListener DateListener, int year, int month, int day){
 		DatePickerDialog dpDialog=new DatePickerDialog(this, DateListener, year, month, day);
 		dpDialog.show();
+	}
 
+	public void TimeDialog(TimePickerDialog.OnTimeSetListener TimeListener, int hour, int minute){
+		TimePickerDialog tpDialog = new TimePickerDialog(this, TimeListener, hour, minute, true);
+		tpDialog.show();
 	}
 
 	private DatePickerDialog.OnDateSetListener BirthdayDateListener = new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-			birthdayTextview.setText(dayOfMonth+". " + (monthOfYear + 1) +". "+year);
+			BirthdayTextview.setText(String.format("%02d. %02d. %04d" , dayOfMonth, (monthOfYear + 1), year));
+		}
+	};
+
+	private DatePickerDialog.OnDateSetListener ChildBirthdayDateListener = new DatePickerDialog.OnDateSetListener() {
+		@Override
+		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+			ChildBirthdayTextview.setText(String.format("%02d. %02d. %04d" , dayOfMonth, (monthOfYear + 1), year));
+		}
+	};
+	
+	private TimePickerDialog.OnTimeSetListener ChildTimeOfBirthTimeListener = new TimePickerDialog.OnTimeSetListener() {
+		@Override
+		public void onTimeSet(TimePicker view, int hour, int minute) {
+			ChildTimeOfBirthTextview.setText(String.format("%02d:%02d",hour, minute));
 		}
 	};
 
 	private DatePickerDialog.OnDateSetListener InsuranceValidityDateListener = new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-			validUntilTextview.setText(String.format("%02d", monthOfYear) + String.valueOf(year).substring(2));
+			ValidUntilTextview.setText(String.format("%02d%02d", monthOfYear, String.valueOf(year).substring(2)));
 		}
 
 	};
@@ -150,13 +193,14 @@ public class PatronInsertActivity extends Activity {
 		}
 		return dbHelper;
 	}
-	
-	
+
+
 	public void savePatron(View view) {
 		getPatronFromUI();
 	}
-	
+
 	private void getPatronFromUI () {
+		insertPatron = new Patron();
 		insertPatron.setFirstname(findViewById(R.id.FirstnameTextView).toString());
 	}
 
