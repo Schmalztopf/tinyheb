@@ -45,20 +45,16 @@ public class TinyhebAPIClientTest {
 		// Let's call the method under test
 		apiClient.checkURL();
 		apiClient.setListener(new Listener() {
-
-
+			
 			@Override
 			public void onAPIServerFound() {
 				assertEquals("Did expect to find API server", serverfindExpected, true);
-
 			}
-
+			
 			@Override
 			public void onAPIServerMissing() {
 				assertEquals("Did not expect to find API server", serverfindExpected, false);
-
 			}
-
 		});
 
 		int result;
@@ -66,7 +62,7 @@ public class TinyhebAPIClientTest {
 		// Let's call the callback. ArgumentCaptor.capture() works like a matcher.
 		verify(mockAPICollaborator, times(1)).checkIfURLReachable((TinyhebAPIClient) callbackCaptor.capture());
 		assertEquals("Initially Server shoulld not be available", serverfindExpected, apiClient.isAvailable());
-		
+
 		result = 404;
 		serverfindExpected = false;
 		callbackCaptor.getValue().onResponse(result);

@@ -1,28 +1,44 @@
 package org.tinyheb.mobile;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.robolectric.RuntimeEnvironment;
-import org.robolectric.Shadows;
-import org.robolectric.Robolectric;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.view.View;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.times;
+import org.robolectric.Robolectric;
+import org.robolectric.Shadows;
+import org.robolectric.shadows.ShadowActivity;
+import org.tinyheb.data.rest.TinyhebAPICallback;
+import org.tinyheb.data.rest.TinyhebAPIClient;
+import org.tinyheb.data.rest.TinyhebAPICollaborator;
 import org.tinyheb.test.TinyhebTestRunner;
-import org.robolectric.shadows.ShadowConnectivityManager;
+
+import com.google.common.base.Verify;
+
+import android.content.Intent;
+import android.view.View;
 
 @RunWith(TinyhebTestRunner.class)
 public class MainActivityTests {
 
 	static MainActivity activity;
+	
+	@Mock
+	private TinyhebAPIClient mockCheckURLAPICollaborator;
 
 	@Before
 	public void setUp() throws Exception {
+
+		MockitoAnnotations.initMocks(this);
+		
 		if (activity == null) {
 			activity = Robolectric.buildActivity(MainActivity.class).create().visible().get();
 		}
@@ -70,7 +86,13 @@ public class MainActivityTests {
 	public void testWifiConnectionChangeEventHandling() {
 		activity.onAPIWifiDisconnected();
 		assertEquals("Button for Synchronisation should be gone - Visibility = " + activity.findViewById(R.id.btnStartSync).getVisibility(), activity.findViewById(R.id.btnStartSync).getVisibility() , View.GONE);
-		fail ("test on asnyc call invoke missing");
+
+		
+		mockCheckURLAPICollaborator = mock(TinyhebAPIClient.class);
+		activity.setClient(mockCheckURLAPICollaborator);
+		
+		activity.onAPIWifiConnected();
+		verify(mockCheckURLAPICollaborator, times(1)).checkURL();
 	}
 	
 

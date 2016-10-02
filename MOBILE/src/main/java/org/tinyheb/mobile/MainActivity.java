@@ -15,6 +15,8 @@ public class MainActivity extends Activity implements TinyhebAPIClient.Listener,
 	private Button btnSynchronisation;
 	private WiFiReceiver wifiStatusReceiver;
 	private IntentFilter wifiFilter;
+	private TinyhebAPIClient client;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -22,6 +24,23 @@ public class MainActivity extends Activity implements TinyhebAPIClient.Listener,
 		btnSynchronisation = (Button) findViewById(R.id.btnStartSync);
 		wifiFilter = new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION);
 		addWifiReceiver();
+		client = new TinyhebAPIClient();
+	}
+
+	public WiFiReceiver getWifiStatusReceiver() {
+		return wifiStatusReceiver;
+	}
+
+	public void setWifiStatusReceiver(WiFiReceiver wifiStatusReceiver) {
+		this.wifiStatusReceiver = wifiStatusReceiver;
+	}
+
+	public TinyhebAPIClient getClient() {
+		return client;
+	}
+
+	public void setClient(TinyhebAPIClient client) {
+		this.client = client;
 	}
 
 	@Override
@@ -94,7 +113,6 @@ public class MainActivity extends Activity implements TinyhebAPIClient.Listener,
 
 	@Override
 	public void onAPIWifiConnected() {
-		TinyhebAPIClient client = new TinyhebAPIClient();
 		client.setListener(this);
 		client.checkURL();
 	}
