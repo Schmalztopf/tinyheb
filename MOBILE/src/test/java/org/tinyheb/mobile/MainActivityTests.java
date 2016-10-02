@@ -1,7 +1,6 @@
 package org.tinyheb.mobile;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -20,61 +19,59 @@ import org.robolectric.shadows.ShadowConnectivityManager;
 @RunWith(TinyhebTestRunner.class)
 public class MainActivityTests {
 
-    MainActivity activity;
+	static MainActivity activity;
 
-    @Before
-    public void setUp() throws Exception {
-        if (activity == null) {
-            activity = Robolectric.buildActivity(MainActivity.class).create().visible().get();
-        }
+	@Before
+	public void setUp() throws Exception {
+		if (activity == null) {
+			activity = Robolectric.buildActivity(MainActivity.class).create().visible().get();
+		}
 
-    }
+	}
 
-    @Test
-    public void testStartPatronInsertButton() {
-        activity.findViewById(R.id.btnInsertPatrons).performClick();
+	@Test
+	public void testStartPatronInsertButton() {
+		activity.findViewById(R.id.btnInsertPatrons).performClick();
 
-        Intent expectedIntent = new Intent(activity, PatronInsertActivity.class);
-        Intent resultIntent = Shadows.shadowOf(activity).getNextStartedActivity();
-        assertEquals("Patron insert activity should have been startet.", resultIntent, expectedIntent);
-    }
+		Intent expectedIntent = new Intent(activity, PatronInsertActivity.class);
+		Intent resultIntent = Shadows.shadowOf(activity).getNextStartedActivity();
+		assertEquals("Patron insert activity should have been startet.", resultIntent.toString(), expectedIntent.toString());
+	}
 
-    @Test
-    public void testStartPatronShowButton() {
-        activity.findViewById(R.id.btnShowPatrons).performClick();
+	@Test
+	public void testStartPatronShowButton() {
+		activity.findViewById(R.id.btnShowPatrons).performClick();
 
-        Intent expectedIntent = new Intent(activity, MasterDataPagerActivity.class);
-        Intent resultIntent = Shadows.shadowOf(activity).getNextStartedActivity();
-        assertEquals("Master data activity should have been startet.", resultIntent, expectedIntent);
-    }
+		Intent expectedIntent = new Intent(activity, MasterDataPagerActivity.class);
+		Intent resultIntent = Shadows.shadowOf(activity).getNextStartedActivity();
+		assertEquals("Master data activity should have been startet.", resultIntent.toString(), expectedIntent.toString());
+	}
 
-    @Test
-    public void testStartSynchronizeButton() {
-        activity.findViewById(R.id.btnStartSync).performClick();
+	@Test
+	public void testStartSynchronizeButton() {
+		activity.findViewById(R.id.btnStartSync).performClick();
 
-        Intent expectedIntent = new Intent(activity, APISyncService.class);
-        Intent resultIntent = Shadows.shadowOf(activity).getNextStartedService();
-        assertEquals("API Synchronisation Service should have been startet.", resultIntent, expectedIntent);
-    }
-
-    private ConnectivityManager connectivityManager;
-    private ShadowConnectivityManager shadowConnectivityManager;
+		Intent expectedIntent = new Intent(activity, APISyncService.class);
+		Intent resultIntent = Shadows.shadowOf(activity).getNextStartedService();
+		assertEquals("API Synchronisation Service should have been startet.", resultIntent.toString(), expectedIntent.toString());
+	}
 
 
-    @Test
-    public void testWifiReceiverHandling() {
-        Intent intent = new Intent("org.tinyheb.data.rest.WifiReceiver");
-        RuntimeEnvironment.application.sendBroadcast(intent);
-        
-        
-        connectivityManager = getConnectivityManager();
-        assertTrue("Wifi should be connected", connectivityManager.getActiveNetworkInfo().isConnected());
+	@Test
+	public void testAPIServerSearchResultHandling() {
+		activity.onAPIServerFound();
+		assertEquals("Button for Synchronisation should be gone - Visibility = " + activity.findViewById(R.id.btnStartSync).getVisibility(), activity.findViewById(R.id.btnStartSync).getVisibility() , View.VISIBLE);
 
-        assertTrue("Button for Synchronisation should be gone - Visibility = " + activity.findViewById(R.id.btnStartSync).getVisibility(), activity.findViewById(R.id.btnStartSync).getVisibility() == View.GONE);
+		activity.onAPIServerMissing();
+		assertEquals("Button for Synchronisation should be gone - Visibility = " + activity.findViewById(R.id.btnStartSync).getVisibility(), activity.findViewById(R.id.btnStartSync).getVisibility() , View.GONE);
+	}
+	
+	@Test
+	public void testWifiConnectionChangeEventHandling() {
+		activity.onAPIWifiDisconnected();
+		assertEquals("Button for Synchronisation should be gone - Visibility = " + activity.findViewById(R.id.btnStartSync).getVisibility(), activity.findViewById(R.id.btnStartSync).getVisibility() , View.GONE);
+		fail ("test on asnyc call invoke missing");
+	}
+	
 
-    }
-
-    private ConnectivityManager getConnectivityManager() {
-        return (ConnectivityManager) RuntimeEnvironment.application.getSystemService(Context.CONNECTIVITY_SERVICE);
-    }
 }
