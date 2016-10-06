@@ -1,5 +1,5 @@
 #
-# generated on 2016/09/16 03:20:03
+# generated on 2016/10/06 09:14:07
 #
 # --table-start--
 dataClass=org.tinyheb.core.Patron
@@ -19,6 +19,77 @@ useGetSet=true
 # --field-start--
 fieldName=lastname
 columnName=lastname
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=birthdate
+columnName=birthdate
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=telefonnumber
+columnName=telefonnumber
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=street
+columnName=street
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=postalcode
+columnName=postalcode
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=city
+columnName=city
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=distancetooffice
+columnName=distancetooffice
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=insurancenumber
+columnName=insurancenumber
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=insurancevaliduntil
+columnName=insurancevaliduntil
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=insuracncestatus
+columnName=insuracncestatus
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=insurance
+columnName=ik
+foreign=true
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=numberofchildren
+columnName=numberofchildren
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=child_dateofbirth
+columnName=child_dateofbirth
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=child_dateofbirth_status
+columnName=child_dateofbirth_status
+useGetSet=true
+# --field-end--
+# --field-start--
+fieldName=private_insurance_factor
+columnName=private_insurance_factor
 useGetSet=true
 # --field-end--
 # --table-fields-end--

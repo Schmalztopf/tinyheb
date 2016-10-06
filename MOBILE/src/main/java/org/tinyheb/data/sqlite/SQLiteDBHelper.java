@@ -24,7 +24,7 @@ public class  SQLiteDBHelper extends OrmLiteSqliteOpenHelper {
 
 
 	// any time you make changes to your database objects, you may have to increase the database version
-	private static final int DATABASE_VERSION = 11;	
+	private static final int DATABASE_VERSION = 14;	
 
 	public SQLiteDBHelper(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION, R.raw.ormlite_config);

@@ -1,11 +1,13 @@
 package org.tinyheb.mobile;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.tinyheb.core.HealthInsurance;
 import org.tinyheb.core.Patron;
+import org.tinyheb.core.TinyhebDataContainer;
 import org.tinyheb.data.rest.TinyhebRestClient;
 import org.tinyheb.data.sqlite.SQLiteDBHelper;
 
@@ -18,6 +20,9 @@ import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
 
+import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -74,29 +79,35 @@ public class APISyncService extends Service {
                 }
 
                 @Override
+                public void onProgress(long bytesWritten, long totalSize) {
+                	Toast.makeText(getBaseContext(), String.format("%02.0d % uploaded", bytesWritten/totalSize * 100), Toast.LENGTH_SHORT);
+                }
+                
+                @Override
                 public void onSuccess(int statusCode, Header[] headers,
                         JSONObject response) {
 
                     super.onSuccess(statusCode, headers, response);
+                    
+                    TinyhebDataContainer alldata = new TinyhebDataContainer();
 
-                    Gson gson = new GsonBuilder().create();
-
-                    List<Patron> patrons = null;
-                    List<HealthInsurance> insurances = null;
+                    ObjectMapper mapper = new ObjectMapper();
                     try {
-                        patrons = gson.fromJson(response.getString("patrons"), new TypeToken<List<Patron>>() {
-                        }.getType());
-                        insurances = gson.fromJson(response.getString("insurances"), new TypeToken<List<HealthInsurance>>() {
-                        }.getType());
-
-                    } catch (JsonSyntaxException e) {
-                        e.printStackTrace();
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
+						alldata = mapper.readValue(response.toString(), TinyhebDataContainer.class);
+					} catch (JsonParseException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (JsonMappingException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+                    
                     try {
-                        writeClient(patrons, Patron.class);
-                        writeClient(insurances, HealthInsurance.class);
+                        writeClient(alldata.patrons, Patron.class);
+                        writeClient(alldata.insurances, HealthInsurance.class);
 
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -129,7 +140,7 @@ public class APISyncService extends Service {
         RuntimeExceptionDao<T, T_ID> simpleDao = getHelper().getRuntimeExceptionDao(classtype);
 
         for (T newEntry : newClients) {
-            simpleDao.createIfNotExists(newEntry);
+            simpleDao.createOrUpdate(newEntry);
         }
         Toast.makeText(this, newClients.size() + " Einträge geladen", Toast.LENGTH_SHORT).show();
 

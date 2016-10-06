@@ -12,12 +12,16 @@ import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -52,6 +56,17 @@ public class MasterDataPagerActivity extends Activity {
 
 		listview1.setAdapter(new PatronAdapter(mContext, R.layout.row, this.patrons));
 		listview2.setAdapter(new InsuranceAdapter(mContext, R.layout.row, this.insurances));
+		
+		listview1.setOnItemClickListener(new OnItemClickListener() {
+		    @Override
+		    public void onItemClick(AdapterView<?> a,
+		            View v, int position, long id) {
+		        Patron item = (Patron) a.getItemAtPosition(position);
+		        Intent intent = new Intent(v.getContext(), PatronInsertActivity.class);
+		        intent.putExtra("org.tinyheb.core.Patron", item.getId());
+		        startActivity(intent);
+		    }
+		});
 	}
 
 	private void getPatrons() {
@@ -64,7 +79,6 @@ public class MasterDataPagerActivity extends Activity {
 			returnList.add(patron);
 		}
 		this.patrons = returnList;
-		//runOnUiThread(returnRes);
 	}
 
 	private void getInsurances() {
@@ -149,7 +163,7 @@ public class MasterDataPagerActivity extends Activity {
 				TextView tt = (TextView) v.findViewById(R.id.toptext);
 				TextView bt = (TextView) v.findViewById(R.id.bottomtext);
 				if (tt != null) {
-					tt.setText(o.getLastname() + ", " + o.getFirstname());                            }
+					tt.setText(o.getId() + ": " + o.getLastname() + ", " + o.getFirstname() + ", " + o.getPostalcode());                            }
 				if(bt != null){
 					bt.setText("");
 				}

@@ -1,22 +1,22 @@
 package org.tinyheb.mobile;
 
+import org.tinyheb.core.Patron;
+import org.tinyheb.data.rest.TinyhebAPIClient;
 import org.tinyheb.data.rest.WiFiReceiver;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import org.tinyheb.data.rest.TinyhebAPIClient;
 
-public class MainActivity extends Activity implements TinyhebAPIClient.Listener, WiFiReceiver.Listener {
+public class MainActivity extends AbstractActivity implements TinyhebAPIClient.Listener, WiFiReceiver.Listener {
 
 	private Button btnSynchronisation;
 	private WiFiReceiver wifiStatusReceiver;
 	private IntentFilter wifiFilter;
 	private TinyhebAPIClient client;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -76,7 +76,9 @@ public class MainActivity extends Activity implements TinyhebAPIClient.Listener,
 
 
 	public void showPatrons(View view) {
-		startActivity(new Intent(this, MasterDataPagerActivity.class));
+		Intent MasterdataIntent = new Intent(this, MasterDataPagerActivity.class);
+
+		startActivity(MasterdataIntent);
 	}
 
 	public void insertPatrons(View view) {
@@ -119,6 +121,6 @@ public class MainActivity extends Activity implements TinyhebAPIClient.Listener,
 
 	@Override
 	public void onAPIWifiDisconnected() {
-		btnSynchronisation.setVisibility(View.GONE);
+		btnSynchronisation.setVisibility(View.VISIBLE);
 	}
 }

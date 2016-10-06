@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.tinyheb</groupId>
 	<artifactId>mobile</artifactId>
-	<version>0.1.0</version>
+	<version>0.0.1</version>
 	<packaging>apk</packaging>
 
 	<properties>
@@ -14,6 +14,12 @@
 	</properties>
 
 	<dependencies>
+		<dependency>
+			<groupId>org.robobinding</groupId>
+			<artifactId>robobinding</artifactId>
+			<version>0.8.14</version>
+		</dependency>
+
 		<dependency>
 			<groupId>com.j256.ormlite</groupId>
 			<artifactId>ormlite-core</artifactId>
@@ -25,9 +31,14 @@
 			<version>4.48</version>
 		</dependency>
 		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.7</version>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20160810</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.6.3</version>
 		</dependency>
 		<dependency>
 			<groupId>${project.groupId}</groupId>
@@ -55,29 +66,29 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.12</version>
-			<type>jar</type>
 			<scope>test</scope>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.robolectric</groupId>
 			<artifactId>robolectric</artifactId>
 			<version>3.1.2</version>
-			<type>jar</type>
 			<scope>test</scope>
-
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.robolectric</groupId>
 			<artifactId>shadows-core</artifactId>
 			<version>3.1.2</version>
-			<type>jar</type>
 			<scope>test</scope>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.mockito</groupId>
 			<artifactId>mockito-all</artifactId>
 			<version>1.10.19</version>
 			<scope>test</scope>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.powermock</groupId>
@@ -91,12 +102,14 @@
 			<artifactId>powermock-module-junit4</artifactId>
 			<version>1.6.5</version>
 			<scope>test</scope>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-mockito</artifactId>
 			<version>1.6.5</version>
 			<scope>test</scope>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>org.robolectric</groupId>
@@ -109,11 +122,15 @@
 			<groupId>com.squareup.retrofit2</groupId>
 			<artifactId>retrofit</artifactId>
 			<version>2.1.0</version>
+			<scope>test</scope>
+			<type>jar</type>
 		</dependency>
 		<dependency>
 			<groupId>com.squareup.retrofit2</groupId>
 			<artifactId>converter-gson</artifactId>
 			<version>2.1.0</version>
+			<scope>test</scope>
+			<type>jar</type>
 		</dependency>
 	</dependencies>
 
@@ -143,7 +160,7 @@
 				<configuration>
 					<androidManifestFile>${project.basedir}/src/main/AndroidManifest.xml</androidManifestFile>
 					<assetsDirectory>${project.basedir}/src/main/assets</assetsDirectory>
-					<resourceDirectory>${project.basedir}/src/main/res</resourceDirectory>
+					<resourceDirectory>${project.basedir}/res</resourceDirectory>
 					<nativeLibrariesDirectory>${project.basedir}/src/main/native</nativeLibrariesDirectory>
 					<sdk>
 						<platform>17</platform>
@@ -174,11 +191,6 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<resources>
-			<resource>
-				<directory>src/res</directory>
-			</resource>
-		</resources>
 	</build>
 
 	<name>MOBILE</name>

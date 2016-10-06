@@ -1,5 +1,6 @@
 <ScrollView xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://robobinding.org/android"
     android:id="@+id/MainScrollView"
     android:layout_width="match_parent"
     android:layout_height="fill_parent"
@@ -22,7 +23,8 @@
             android:hint="@string/firstname_hint"
             android:imeOptions="actionNext"
             android:inputType="text"
-            android:width="170dp" />
+            android:width="170dp"
+            bind:text="${firstname}" />
 
         <EditText
             android:id="@+id/LastnameTextview"
@@ -33,7 +35,8 @@
             android:ems="10"
             android:hint="@string/lastname_hint"
             android:imeOptions="actionNext"
-            android:inputType="text" />
+            android:inputType="text"
+            bind:text="${lastname}" />
 
         <Button
             android:id="@+id/AdressInputButton"
@@ -65,7 +68,8 @@
                 android:ems="10"
                 android:hint="@string/street_input_hint"
                 android:imeOptions="actionNext"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                bind:text="${street}" />
 
             <EditText
                 android:id="@+id/PostalCodeEditText"
@@ -79,7 +83,8 @@
                 android:imeOptions="actionNext"
                 android:inputType="textPostalAddress|number"
                 android:maxLength="@integer/plz_max_length"
-                android:width="100dp" />
+                android:width="100dp"
+                bind:text="${postalcode}" />
 
             <EditText
                 android:id="@+id/CityEditText"
@@ -93,7 +98,8 @@
                 android:ems="10"
                 android:hint="@string/city_input_hint"
                 android:imeOptions="actionNext"
-                android:inputType="textPostalAddress" />
+                android:inputType="textPostalAddress"
+                bind:text="${city}" />
 
             <EditText
                 android:id="@+id/PhoneEditText"
@@ -106,7 +112,8 @@
                 android:layout_below="@+id/PostalCodeEditText"
                 android:ems="10"
                 android:hint="@string/phone_input_hint"
-                android:inputType="phone" />
+                android:inputType="phone"
+                bind:text="${telefonnumber}" />
 
             <EditText
                 android:id="@+id/BirthdayLabelTextView"
@@ -130,7 +137,8 @@
                 android:ems="10"
                 android:hint="@string/distance_hint"
                 android:imeOptions="actionNext"
-                android:inputType="numberDecimal" />
+                android:inputType="numberDecimal"
+                bind:text="${distancetooffice}" />
         </RelativeLayout>
 
         <Button
@@ -165,7 +173,8 @@
                 android:imeOptions="actionNext"
                 android:inputType="number"
                 android:maxLength="@integer/plz_max_length"
-                android:width="100dp" />
+                android:width="100dp"
+                bind:text="${insurancenumber}"  />
 
             <AutoCompleteTextView
                 android:id="@+id/IkInsuranceAgencyAutoCompleteTextView"
@@ -207,7 +216,8 @@
                 android:hint="@string/Insurance_valid_until_hint"
                 android:imeOptions="actionNext"
                 android:inputType="date"
-                android:width="150dp" />
+                android:width="150dp"
+                bind:text="${insurancevaliduntil}"  />
 
             <Spinner
                 android:id="@+id/InsuranceStatusSpinner"
@@ -272,49 +282,48 @@
                 android:inputType="time" >
             </EditText>
 
-        <RadioGroup
-            android:id="@+id/TypeOfBirthdateRadioGroup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_below="@+id/ChildBirthLabelTextView"
-            android:orientation="vertical" >
+            <RadioGroup
+                android:id="@+id/TypeOfBirthdateRadioGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/ChildBirthLabelTextView"
+                android:orientation="vertical" >
 
-            <RadioButton
-                android:id="@+id/rbCalculatedBirthdateOption"
+                <RadioButton
+                    android:id="@+id/rbCalculatedBirthdateOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:layout_below="@+id/BirthInputLayout"
+                    android:imeOptions="actionNext"
+                    android:tag="TypeOfBirthdate"
+                    android:text="@string/calculated_birthdate_text" />
+
+                <RadioButton
+                    android:id="@+id/rbTrueBirthdateOption"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBaseline="@+id/rbCalculatedBirthdateOption"
+                    android:layout_alignBottom="@+id/rbCalculatedBirthdateOption"
+                    android:layout_toRightOf="@+id/rbCalculatedBirthdateOption"
+                    android:contentDescription="TypeOfBirthdate"
+                    android:tag="TypeOfBirthdate"
+                    android:text="@string/true_birthdate_text" />
+            </RadioGroup>
+
+            <Spinner
+                android:id="@+id/spNumberOfChildrenBorn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
-                android:layout_below="@+id/BirthInputLayout"
-                android:imeOptions="actionNext"
-                android:tag="TypeOfBirthdate"
-                android:text="@string/calculated_birthdate_text" />
-
-            <RadioButton
-                android:id="@+id/rbTrueBirthdateOption"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBaseline="@+id/rbCalculatedBirthdateOption"
-                android:layout_alignBottom="@+id/rbCalculatedBirthdateOption"
-                android:layout_toRightOf="@+id/rbCalculatedBirthdateOption"
-                android:contentDescription="TypeOfBirthdate"
-                android:tag="TypeOfBirthdate"
-                android:text="@string/true_birthdate_text" />
-        </RadioGroup>
-
-        <Spinner
-            android:id="@+id/spNumberOfChildrenBorn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentLeft="true"
-            android:layout_below="@+id/ChildBirthLabelTextView"
-            android:layout_toLeftOf="@+id/TypeOfBirthdateRadioGroup"
-            android:ems="10"
-            android:entries="@array/number_of_children_texts"
-            android:hint="@string/insurance_status_hint"
-            android:imeOptions="actionNext" />
-
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/ChildBirthLabelTextView"
+                android:layout_toLeftOf="@+id/TypeOfBirthdateRadioGroup"
+                android:ems="10"
+                android:entries="@array/number_of_children_texts"
+                android:hint="@string/insurance_status_hint"
+                android:imeOptions="actionNext" />
         </RelativeLayout>
 
         <Button
@@ -338,7 +347,6 @@
             android:layout_alignLeft="@+id/LastnameTextview"
             android:layout_alignParentRight="true"
             android:text="Abbrechen" />
-
     </RelativeLayout>
 
 </ScrollView>

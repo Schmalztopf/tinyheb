@@ -5,12 +5,13 @@ import java.util.Calendar;
 import java.util.Locale;
 import java.util.TimeZone;
 
+import org.robobinding.annotation.ViewBinding;
+import org.robobinding.customviewbinding.CustomViewBinding;
 import org.tinyheb.core.HealthInsurance;
 import org.tinyheb.core.Patron;
 import org.tinyheb.data.sqlite.SQLiteDBHelper;
 import org.tinyheb.dialogs.MonthYearPickerDialog;
 
-import android.app.Activity;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.Context;
@@ -33,7 +34,8 @@ import android.widget.TimePicker;
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
-public class PatronInsertActivity extends Activity {
+
+public class PatronInsertActivity extends AbstractActivity {
 
 	private AutoCompleteTextView InsuranceAgencyTextView;
 	private TextView InsuranceAgencyDataTextView;
@@ -44,13 +46,21 @@ public class PatronInsertActivity extends Activity {
 	private SQLiteDBHelper dbHelper = null;
 	private ArrayList<HealthInsurance> insurances = null;
 	private InsuranceAdapter adapter;
-	private Patron insertPatron;
+	private Patron insertPatron = new Patron();
 	private PatronInsertActivity currentActivity = this;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_patron_insert);
+
+		long patid = getIntent().getIntExtra("org.tinyheb.core.Patron", 0);
+		RuntimeExceptionDao<Patron, Integer>  patronDao = getHelper().getRuntimeExceptionDao(Patron.class);
+		if (patid == 0)
+			insertPatron = new Patron();
+		else
+			insertPatron = patronDao.queryForEq("_id", patid).get(0);
+		initializeContentView(R.layout.activity_patron_insert, insertPatron);
 
 		Button btnAbort = (Button) findViewById(R.id.btnAbort);
 		btnAbort.setOnClickListener(new OnClickListener() {
@@ -59,7 +69,7 @@ public class PatronInsertActivity extends Activity {
 				currentActivity.finish();
 			}
 		});
-		
+
 		bindInsuranceAgencyAutocompleteData();
 
 		bindLayoutShowHIdeButton(R.id.AdressInputButton, R.id.AddressLayout);
@@ -145,7 +155,7 @@ public class PatronInsertActivity extends Activity {
 			ChildBirthdayTextview.setText(String.format("%02d. %02d. %04d" , dayOfMonth, (monthOfYear + 1), year));
 		}
 	};
-	
+
 	private TimePickerDialog.OnTimeSetListener ChildTimeOfBirthTimeListener = new TimePickerDialog.OnTimeSetListener() {
 		@Override
 		public void onTimeSet(TimePicker view, int hour, int minute) {
@@ -196,13 +206,16 @@ public class PatronInsertActivity extends Activity {
 
 
 	public void savePatron(View view) {
-		getPatronFromUI();
+		RuntimeExceptionDao<Patron, Integer>  patronDao = getHelper().getRuntimeExceptionDao(Patron.class);
+		patronDao.deleteById(0);
+
+		if (insertPatron.getId() == 0)
+			insertPatron.setId((int) -(patronDao.countOf()+1));
+		patronDao.createOrUpdate(insertPatron);
+		finish();
 	}
 
-	private void getPatronFromUI () {
-		insertPatron = new Patron();
-		insertPatron.setFirstname(findViewById(R.id.FirstnameTextView).toString());
-	}
+
 
 	private class InsuranceAdapter extends ArrayAdapter<HealthInsurance> {
 
@@ -281,9 +294,6 @@ public class PatronInsertActivity extends Activity {
 		}
 
 	}
-
-
-
 
 
 }

@@ -1,6 +1,7 @@
 package org.tinyheb.core;
 
 
+import org.robobinding.annotation.PresentationModel;
 import org.tinyheb.core.annotations.MySqlField;
 import org.tinyheb.core.annotations.MySqlTable;
 
@@ -9,8 +10,12 @@ import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Insurances")
 @MySqlTable(ormtable = @DatabaseTable(tableName = "Krankenkassen"))
+@PresentationModel
 public class HealthInsurance {
 	
+	public HealthInsurance() {
+		// ORMLite needs empty constructor
+	}
 	
 	@DatabaseField(columnName = "_id",generatedId = false, useGetSet = true, id=true)
 	@MySqlField(ormfield = @DatabaseField(columnName = "ik",generatedId = false, useGetSet = true, id=true))

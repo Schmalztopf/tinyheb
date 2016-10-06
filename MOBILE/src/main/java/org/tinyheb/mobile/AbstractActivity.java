@@ -19,7 +19,11 @@ public abstract class AbstractActivity extends Activity {
 	}
 
 	private BinderFactory getReusableBinderFactory() {
-		BinderFactory binderFactory = ((AbstractActivity) getApplicationContext()).getReusableBinderFactory();
+		BinderFactory binderFactory = getTinyhebApp().getReusableBinderFactory();
 		return binderFactory;
+	}
+
+	public TinyhebApp getTinyhebApp() {
+		return (TinyhebApp) getApplicationContext();
 	}
 }

@@ -12,8 +12,8 @@ import javax.ws.rs.core.MediaType;
 
 import org.tinyheb.core.TinyhebDataContainer;
 import org.tinyheb.core.HealthInsurance;
-import org.tinyheb.core.MySqlField;
-import org.tinyheb.core.MySqlTable;
+import org.tinyheb.core.annotations.MySqlField;
+import org.tinyheb.core.annotations.MySqlTable;
 import org.tinyheb.core.Patron;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -28,7 +28,7 @@ import com.j256.ormlite.table.DatabaseTableConfig;
 @Path("/tinyheb")
 public class PatronService {
 
-    String databaseUrl = Constants.dbUrl + "/" + Constants.dbName + "?serverTimezone=UTC";
+    String databaseUrl = Constants.dbUrl  + Constants.dbName + "?serverTimezone=UTC&zeroDateTimeBehavior=convertToNull";
     ConnectionSource connectionSource;
     Dao<Patron, String> patronDao;
     Dao<HealthInsurance, String> insuranceDao;
@@ -36,8 +36,8 @@ public class PatronService {
     public PatronService() {
         try {
             connectionSource = new JdbcConnectionSource(databaseUrl, "putu", "");
-            patronDao = DaoManager.createDao(connectionSource, getDatabaseTableConfig(Patron.class));
             insuranceDao = DaoManager.createDao(connectionSource, getDatabaseTableConfig(HealthInsurance.class));
+            patronDao = DaoManager.createDao(connectionSource, getDatabaseTableConfig(Patron.class));
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -79,6 +79,7 @@ public class PatronService {
             fieldconfig.setId(mysqlannotation.ormfield().id());
             fieldconfig.setUseGetSet(mysqlannotation.ormfield().useGetSet());
             fieldconfig.setGeneratedId(mysqlannotation.ormfield().generatedId());
+            fieldconfig.setForeign(mysqlannotation.ormfield().foreign());
             fieldConfigs.add(fieldconfig);
         }
 
