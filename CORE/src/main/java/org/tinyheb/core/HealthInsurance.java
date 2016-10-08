@@ -1,12 +1,12 @@
 package org.tinyheb.core;
 
-
 import org.robobinding.annotation.PresentationModel;
 import org.tinyheb.core.annotations.MySqlField;
 import org.tinyheb.core.annotations.MySqlTable;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
 
 @DatabaseTable(tableName = "Insurances")
 @MySqlTable(ormtable = @DatabaseTable(tableName = "Krankenkassen"))

@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
@@ -18,6 +20,7 @@ import org.tinyheb.core.Patron;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.dao.Dao;
+import com.j256.ormlite.dao.Dao.CreateOrUpdateStatus;
 import com.j256.ormlite.dao.DaoManager;
 import com.j256.ormlite.field.DatabaseFieldConfig;
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
@@ -56,12 +59,12 @@ public class PatronService {
         String jsonInString = mapper.writeValueAsString(alldata);
         return jsonInString;
     }
-
-    @GET
-    @Path("/getpatrons")
-    @Produces(MediaType.APPLICATION_JSON)
-    public List<Patron> getPatrons() throws Exception {
-        return patronDao.queryForAll();
+    
+    @POST
+    @Path("/writepatron")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public int writePatron(Patron patron) throws Exception {
+        return patronDao.create(patron);
     }
 
     private static <T> DatabaseTableConfig<T> getDatabaseTableConfig(Class<T> objectclass) {

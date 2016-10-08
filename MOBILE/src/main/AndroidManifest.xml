@@ -18,7 +18,7 @@
         android:label="@string/app_name"
         android:theme="@android:style/Theme.DeviceDefault.Light" >
         <activity
-            android:name=".MainActivity"
+            android:name="org.tinyheb.mobile.activity.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,13 +26,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".PatronInsertActivity"
+            android:name="org.tinyheb.mobile.activity.PatronInsertActivity"
             android:label="@string/title_activity_patron_insert"
             android:windowSoftInputMode="adjustResize" >
         </activity>
 
         <service
-            android:name=".APISyncService"
+            android:name="org.tinyheb.mobile.service.APIGetAllDataService"
             android:enabled="true"
             android:exported="false" >
         </service>
@@ -42,7 +42,7 @@
             android:label="@string/title_activity_master_data" >
         </activity>
         <activity
-            android:name=".MasterDataPagerActivity"
+            android:name="org.tinyheb.mobile.activity.MasterDataPagerActivity"
             android:label="@string/title_activity_master_data_pager" >
         </activity>
     </application>

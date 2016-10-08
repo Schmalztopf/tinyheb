@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE xml>
 <resources>
 
     <string name="app_name">TinyhebMobile</string>
@@ -35,19 +36,6 @@
     <string name="true_birthdate_text">Geburtstermin</string>
     <string name="time_of_birth_hint">Zeit</string>
 
-    <string-array name="insurance_stati">
-        <item>1 1</item>
-        <item>3 1</item>
-        <item>privat</item>
-        <item>1 9</item>
-        <item>3 9</item>
-        <item>1 7</item>
-        <item>1 8</item>
-        <item>3 8</item>
-        <item>5 1</item>
-        <item>SOZ</item>
-        <item>5 9</item>
-    </string-array>
     <string-array name="number_of_children">
         <item>1</item>
         <item>2</item>

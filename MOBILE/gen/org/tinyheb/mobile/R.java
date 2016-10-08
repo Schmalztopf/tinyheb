@@ -9,9 +9,8 @@ package org.tinyheb.mobile;
 
 public final class R {
     public static final class array {
-        public static final int insurance_stati=0x7f080000;
-        public static final int number_of_children=0x7f080001;
-        public static final int number_of_children_texts=0x7f080002;
+        public static final int number_of_children=0x7f080000;
+        public static final int number_of_children_texts=0x7f080001;
     }
     public static final class attr {
     }
@@ -20,6 +19,7 @@ public final class R {
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int list_selector_background=0x7f020001;
     }
     public static final class id {
         public static final int AddressLayout=0x7f0a0008;
@@ -69,6 +69,7 @@ public final class R {
         public static final int activity_patron_insert=0x7f030002;
         public static final int date_picker_dialog=0x7f030003;
         public static final int row=0x7f030004;
+        public static final int string_item_layout1=0x7f030005;
     }
     public static final class raw {
         public static final int ormlite_config=0x7f040000;

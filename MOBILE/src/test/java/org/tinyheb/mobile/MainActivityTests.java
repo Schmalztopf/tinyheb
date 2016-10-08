@@ -12,7 +12,11 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.Shadows;
-import org.tinyheb.data.rest.TinyhebAPIClient;
+import org.tinyheb.mobile.activity.MainActivity;
+import org.tinyheb.mobile.activity.MasterDataPagerActivity;
+import org.tinyheb.mobile.activity.PatronInsertActivity;
+import org.tinyheb.mobile.data.rest.TinyhebAPIClient;
+import org.tinyheb.mobile.service.APIGetAllDataService;
 import org.tinyheb.test.TinyhebTestRunner;
 
 import android.content.Intent;
@@ -59,7 +63,7 @@ public class MainActivityTests {
 	public void testStartSynchronizeButton() {
 		activity.findViewById(R.id.btnStartSync).performClick();
 
-		Intent expectedIntent = new Intent(activity, APISyncService.class);
+		Intent expectedIntent = new Intent(activity, APIGetAllDataService.class);
 		Intent resultIntent = Shadows.shadowOf(activity).getNextStartedService();
 		assertEquals("API Synchronisation Service should have been startet.", resultIntent.toString(), expectedIntent.toString());
 	}

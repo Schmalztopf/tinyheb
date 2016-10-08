@@ -2,17 +2,14 @@ package org.tinyheb.core;
 
 import java.util.Date;
 
-import org.robobinding.annotation.PresentationModel;
 import org.tinyheb.core.annotations.MySqlField;
 import org.tinyheb.core.annotations.MySqlTable;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-
 @DatabaseTable(tableName = "Patrons")
 @MySqlTable(ormtable = @DatabaseTable(tableName = "Stammdaten"))
-@PresentationModel
 public class Patron {
 
 	@SuppressWarnings("unused")
