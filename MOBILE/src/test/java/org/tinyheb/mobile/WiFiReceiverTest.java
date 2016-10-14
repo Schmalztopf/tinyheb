@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package org.tinyheb.mobile.data.rest;
+package org.tinyheb.mobile;
 
 import android.content.Context;
 import android.net.ConnectivityManager;
@@ -21,7 +21,7 @@ import org.mockito.exceptions.base.MockitoAssertionError;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 import org.robolectric.Shadows;
-import org.tinyheb.mobile.data.rest.WiFiReceiver;
+import org.tinyheb.mobile.WiFiReceiver;
 import org.tinyheb.test.TinyhebTestRunner;
 
 

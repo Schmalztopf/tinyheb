@@ -1,0 +1,9 @@
+<!DOCTYPE xml>
+<TinyExpandableListView
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:bind="http://robobinding.org/android"
+    bind:source="{list}">
+    
+    
+</TinyExpandableListView>

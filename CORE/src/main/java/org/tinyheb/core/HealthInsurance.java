@@ -17,8 +17,8 @@ public class HealthInsurance {
 		// ORMLite needs empty constructor
 	}
 	
-	@DatabaseField(columnName = "_id",generatedId = false, useGetSet = true, id=true)
-	@MySqlField(ormfield = @DatabaseField(columnName = "ik",generatedId = false, useGetSet = true, id=true))
+	@DatabaseField(columnName = "_id", useGetSet = true, id=true)
+	@MySqlField(ormfield = @DatabaseField(columnName = "ik", useGetSet = true, id=true))
 	private String iknumber;
 	@DatabaseField(columnName = "name",useGetSet = true)
 	@MySqlField(ormfield = @DatabaseField(columnName = "name",useGetSet = true))

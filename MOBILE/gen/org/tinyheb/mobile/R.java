@@ -18,8 +18,10 @@ public final class R {
         public static final int address_input_height=0x7f050000;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int list_selector_background=0x7f020001;
+        public static final int circle_green=0x7f020000;
+        public static final int circle_red=0x7f020001;
+        public static final int ic_launcher=0x7f020002;
+        public static final int list_selector_background=0x7f020003;
     }
     public static final class id {
         public static final int AddressLayout=0x7f0a0008;
@@ -40,24 +42,29 @@ public final class R {
         public static final int InsuranceStatusSpinner=0x7f0a0015;
         public static final int LastnameTextview=0x7f0a0006;
         public static final int MainScrollView=0x7f0a0004;
+        public static final int PatronsListView=0x7f0a0003;
         public static final int PhoneEditText=0x7f0a000c;
         public static final int PostalCodeEditText=0x7f0a000a;
         public static final int SavePatronButton=0x7f0a001e;
         public static final int StreetTextView=0x7f0a0009;
         public static final int TimeOfBirthTextView=0x7f0a0019;
         public static final int TypeOfBirthdateRadioGroup=0x7f0a001a;
-        public static final int bottomtext=0x7f0a0023;
+        public static final int bottomtext=0x7f0a0028;
         public static final int btnAbort=0x7f0a001f;
         public static final int btnInsertPatrons=0x7f0a0001;
         public static final int btnShowPatrons=0x7f0a0000;
         public static final int btnStartSync=0x7f0a0002;
+        public static final int lblFirstname=0x7f0a0025;
+        public static final int lblId=0x7f0a0023;
+        public static final int lblLastname=0x7f0a0024;
+        public static final int lblListItem=0x7f0a0026;
         public static final int picker_month=0x7f0a0020;
         public static final int picker_year=0x7f0a0021;
         public static final int rbCalculatedBirthdateOption=0x7f0a001b;
         public static final int rbTrueBirthdateOption=0x7f0a001c;
         public static final int spNumberOfChildrenBorn=0x7f0a001d;
-        public static final int toptext=0x7f0a0022;
-        public static final int viewpager=0x7f0a0003;
+        public static final int toptext=0x7f0a0027;
+        public static final int vwCircle=0x7f0a0022;
     }
     public static final class integer {
         public static final int address_input_linenumber=0x7f060000;
@@ -68,8 +75,11 @@ public final class R {
         public static final int activity_master_data_pager=0x7f030001;
         public static final int activity_patron_insert=0x7f030002;
         public static final int date_picker_dialog=0x7f030003;
-        public static final int row=0x7f030004;
-        public static final int string_item_layout1=0x7f030005;
+        public static final int listitem_id_name=0x7f030004;
+        public static final int listitem_singletext=0x7f030005;
+        public static final int patron_list=0x7f030006;
+        public static final int row=0x7f030007;
+        public static final int string_item_layout=0x7f030008;
     }
     public static final class raw {
         public static final int ormlite_config=0x7f040000;

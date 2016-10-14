@@ -1,12 +1,9 @@
 package org.tinyheb.mobile.activity;
 
 import org.tinyheb.mobile.R;
-import org.tinyheb.mobile.R.id;
-import org.tinyheb.mobile.R.layout;
+import org.tinyheb.mobile.WiFiReceiver;
 import org.tinyheb.mobile.data.rest.TinyhebAPIClient;
-import org.tinyheb.mobile.data.rest.WiFiReceiver;
 import org.tinyheb.mobile.service.APIGetAllDataService;
-import org.tinyheb.mobile.service.WritePatronService;
 
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -90,7 +87,7 @@ public class MainActivity extends AbstractActivity implements TinyhebAPIClient.L
 	}
 
 	public void startSync(View view) {
-		Intent intent = new Intent(this, WritePatronService.class);
+		Intent intent = new Intent(this, APIGetAllDataService.class);
 		startService(intent);
 	}
 

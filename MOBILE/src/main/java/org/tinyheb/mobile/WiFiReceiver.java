@@ -1,4 +1,4 @@
-package org.tinyheb.mobile.data.rest;
+package org.tinyheb.mobile;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;

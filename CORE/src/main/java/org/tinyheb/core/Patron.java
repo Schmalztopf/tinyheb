@@ -12,12 +12,9 @@ import com.j256.ormlite.table.DatabaseTable;
 @MySqlTable(ormtable = @DatabaseTable(tableName = "Stammdaten"))
 public class Patron {
 
-	@SuppressWarnings("unused")
-	private static final long serialVersionUID = 1L;
-
-	@DatabaseField(columnName = "_id",generatedId = false, useGetSet = true, id = true)
-	@MySqlField(ormfield = @DatabaseField(columnName = "id",generatedId = false, useGetSet = true, id = true))
-	protected int id;
+	@DatabaseField(columnName = "_id", useGetSet = true, id = true)
+	@MySqlField(ormfield = @DatabaseField(columnName = "id", useGetSet = true, id = true))
+	protected int id;	
 	
 	@DatabaseField(columnName = "firstname",useGetSet = true)
 	@MySqlField(ormfield = @DatabaseField(columnName = "vorname",useGetSet = true))

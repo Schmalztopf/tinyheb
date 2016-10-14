@@ -21,6 +21,7 @@ import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
 import cz.msebera.android.httpclient.Header;
+import retrofit2.Response;
 
 public class APIGetAllDataService extends Service {
 
@@ -76,6 +77,13 @@ public class APIGetAllDataService extends Service {
 			writeClient(alldata.insurances, HealthInsurance.class);
 
 		}
+
+		@Override
+		public void onsuccess(Response<Patron> response) {
+			// TODO Auto-generated method stub
+			
+		}
+		
 
 	}
 

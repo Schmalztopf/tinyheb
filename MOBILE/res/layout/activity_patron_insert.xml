@@ -235,7 +235,7 @@
                 android:imeOptions="actionNext" 
                 android:spinnerMode="dialog"
                 bind:itemLayout="@android:layout/simple_spinner_item"
-                bind:dropdownLayout="@layout/string_item_layout1"
+                bind:dropdownLayout="@layout/string_item_layout"
                 bind:itemMapping="[text1.text:{value}]"
                 bind:source="{insuranceStatuses}"
                 bind:onItemSelected="insuranceStatusSelected" />
@@ -335,7 +335,7 @@
                 android:hint="@string/insurance_status_hint"
                 android:imeOptions="actionNext"
                 bind:itemLayout="@android:layout/simple_spinner_item"
-                bind:dropdownLayout="@layout/string_item_layout1"
+                bind:dropdownLayout="@layout/string_item_layout"
                 bind:itemMapping="[text1.text:{value}]"
                 bind:source="{numberOfChildren}"
                 bind:onItemSelected="numberOfChildrenSelected" />

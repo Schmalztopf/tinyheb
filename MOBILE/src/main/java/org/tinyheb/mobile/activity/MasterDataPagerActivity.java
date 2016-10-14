@@ -1,99 +1,93 @@
 package org.tinyheb.mobile.activity;
 
-import java.util.ArrayList;
+import java.sql.SQLException;
+import java.util.List;
 import java.util.Vector;
 
 import org.tinyheb.core.HealthInsurance;
 import org.tinyheb.core.Patron;
+import org.tinyheb.core.TinyhebDataContainer;
 import org.tinyheb.mobile.R;
-import org.tinyheb.mobile.R.id;
-import org.tinyheb.mobile.R.layout;
 import org.tinyheb.mobile.data.sqlite.SQLiteDBHelper;
+import org.tinyheb.mobile.viewbinding.TinyExpandableListView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
+import com.j256.ormlite.stmt.QueryBuilder;
 
-import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class MasterDataPagerActivity extends Activity {
+public class MasterDataPagerActivity extends AbstractActivity {
 
-	private Context mContext;
 	private SQLiteDBHelper dbHelper = null;
-	private ArrayList<Patron> patrons = null;
-	private ArrayList<HealthInsurance> insurances = null;
+
+	TinyhebDataContainer masterdata;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_master_data_pager);
+		LocalBroadcastManager.getInstance(this).registerReceiver(
+				mMessageReceiver, new IntentFilter("TinyhebPatronUpdate"));
 
-		mContext = this;
-		ListView listview1 = new ListView(mContext);
-		ListView listview2 = new ListView(mContext);
+		masterdata = new TinyhebDataContainer();
+		try {
+			getPatrons();
+			getInsurances();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+
+		initializeContentView(R.layout.activity_master_data_pager, masterdata);
+
+
+		TinyExpandableListView listview1 = (TinyExpandableListView) findViewById(R.id.PatronsListView);
+		ListView listview2 = new ListView(this);
 
 		Vector<View> pages = new Vector<View>();
 
 		pages.add(listview1);
 		pages.add(listview2);
 
-		ViewPager vp = (ViewPager) findViewById(R.id.viewpager);
-		PagerAdapter adapter = new CustomPagerAdapter(mContext,pages);
-		vp.setAdapter(adapter);
+		//		ViewPager vp = (ViewPager) findViewById(R.id.viewpager);
+		//		PagerAdapter adapter = new CustomPagerAdapter(this, pages);
+		//		vp.setAdapter(adapter);
 
-		getPatrons();
-		getInsurances();
+		listview2.setAdapter(new InsuranceAdapter(this, R.layout.row, masterdata.insurances));
 
-		listview1.setAdapter(new PatronAdapter(mContext, R.layout.row, this.patrons));
-		listview2.setAdapter(new InsuranceAdapter(mContext, R.layout.row, this.insurances));
+	}
+
+	private void getPatrons() throws SQLException {
+		RuntimeExceptionDao<Patron, Integer> patronDao = 
+				getHelper().getRuntimeExceptionDao(Patron.class);
+		QueryBuilder<Patron, Integer> qb = patronDao.queryBuilder();
+		qb.orderBy("lastname", true);
+		qb.orderBy("firstname", true);
+		masterdata.patrons = qb.query();
+	}
+
+	private void getInsurances() throws SQLException {
+		RuntimeExceptionDao<HealthInsurance, String> insuranceDao = 
+				getHelper().getRuntimeExceptionDao(HealthInsurance.class);
 		
-		listview1.setOnItemClickListener(new OnItemClickListener() {
-		    @Override
-		    public void onItemClick(AdapterView<?> a,
-		            View v, int position, long id) {
-		        Patron item = (Patron) a.getItemAtPosition(position);
-		        Intent intent = new Intent(v.getContext(), PatronInsertActivity.class);
-		        intent.putExtra("org.tinyheb.core.Patron", item.getId());
-		        startActivity(intent);
-		    }
-		});
-	}
+		QueryBuilder<HealthInsurance, String> qb = insuranceDao.queryBuilder();
+		qb.orderBy("name", true);
 
-	private void getPatrons() {
-		ArrayList<Patron> returnList = new ArrayList<Patron>();
-		RuntimeExceptionDao<Patron, Integer> patronDao = null;
-
-		patronDao = getHelper().getRuntimeExceptionDao(Patron.class);
-
-		for (Patron patron : patronDao.queryForAll()) {
-			returnList.add(patron);
-		}
-		this.patrons = returnList;
-	}
-
-	private void getInsurances() {
-		ArrayList<HealthInsurance> returnList = new ArrayList<HealthInsurance>();
-		RuntimeExceptionDao<HealthInsurance, String> patronDao = null;
-
-		patronDao = getHelper().getRuntimeExceptionDao(HealthInsurance.class);
-
-		for (HealthInsurance patron : patronDao.queryForAll()) {
-			returnList.add(patron);
-		}
-		this.insurances = returnList;
-		//runOnUiThread(returnRes);
+		masterdata.insurances = qb.query();
 	}
 
 	@Override
@@ -103,13 +97,6 @@ public class MasterDataPagerActivity extends Activity {
 			dbHelper = null;
 		}
 		super.onDestroy();
-	}
-
-	private SQLiteDBHelper getHelper() {
-		if (dbHelper == null) {
-			dbHelper = (SQLiteDBHelper)OpenHelperManager.getHelper(this, SQLiteDBHelper.class);
-		}
-		return dbHelper;
 	}
 
 	public class CustomPagerAdapter extends PagerAdapter {
@@ -144,41 +131,11 @@ public class MasterDataPagerActivity extends Activity {
 		}
 	}
 
-	private class PatronAdapter extends ArrayAdapter<Patron> {
-
-		private ArrayList<Patron> items;
-
-		public PatronAdapter(Context context, int textViewResourceId, ArrayList<Patron> items) {
-			super(context, textViewResourceId, items);
-			this.items = items;
-		}
-
-		@Override
-		public View getView(int position, View convertView, ViewGroup parent) {
-			View v = convertView;
-			if (v == null) {
-				LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = vi.inflate(R.layout.row, null);
-			}
-			Patron o = items.get(position);
-			if (o != null) {
-				TextView tt = (TextView) v.findViewById(R.id.toptext);
-				TextView bt = (TextView) v.findViewById(R.id.bottomtext);
-				if (tt != null) {
-					tt.setText(o.getId() + ": " + o.getLastname() + ", " + o.getFirstname() + ", " + o.getPostalcode());                            }
-				if(bt != null){
-					bt.setText("");
-				}
-			}
-			return v;
-		}
-	}
-
 	private class InsuranceAdapter extends ArrayAdapter<HealthInsurance> {
 
-		private ArrayList<HealthInsurance> items;
+		private List<HealthInsurance> items;
 
-		public InsuranceAdapter(Context context, int textViewResourceId, ArrayList<HealthInsurance> items) {
+		public InsuranceAdapter(Context context, int textViewResourceId, List<HealthInsurance> items) {
 			super(context, textViewResourceId, items);
 			this.items = items;
 		}
@@ -188,7 +145,7 @@ public class MasterDataPagerActivity extends Activity {
 			View v = convertView;
 			if (v == null) {
 				LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = vi.inflate(R.layout.row, null);
+				v = vi.inflate(R.layout.row, parent, false);
 			}
 			HealthInsurance o = items.get(position);
 			if (o != null) {
@@ -205,4 +162,15 @@ public class MasterDataPagerActivity extends Activity {
 		}
 	}
 
+	private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			try {
+				getPatrons();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	};
 }

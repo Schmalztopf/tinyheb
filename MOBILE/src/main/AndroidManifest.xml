@@ -37,6 +37,12 @@
             android:exported="false" >
         </service>
 
+        <service
+            android:name="org.tinyheb.mobile.service.WritePatronService"
+            android:enabled="true"
+            android:exported="false" >
+        </service>
+        
         <activity
             android:name=".MasterDataActivity"
             android:label="@string/title_activity_master_data" >

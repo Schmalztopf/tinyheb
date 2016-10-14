@@ -7,9 +7,6 @@ import org.tinyheb.core.DateFormatter;
 import org.tinyheb.core.HealthInsurance;
 import org.tinyheb.core.Patron;
 import org.tinyheb.mobile.R;
-import org.tinyheb.mobile.R.id;
-import org.tinyheb.mobile.R.layout;
-import org.tinyheb.mobile.data.sqlite.SQLiteDBHelper;
 import org.tinyheb.mobile.dialogs.MonthYearPickerDialog;
 import org.tinyheb.mobile.presentation.PatronEditPresentation;
 
@@ -32,7 +29,6 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
-import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 
@@ -168,7 +164,7 @@ public class PatronInsertActivity extends AbstractActivity {
 	private DatePickerDialog.OnDateSetListener InsuranceValidityDateListener = new DatePickerDialog.OnDateSetListener() {
 		@Override
 		public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
-			ValidUntilTextview.setText(String.format("%02d%02d", monthOfYear, String.valueOf(year).substring(2)));
+			ValidUntilTextview.setText(String.format("%02d%02d", monthOfYear, year % 100));
 		}
 
 	};
