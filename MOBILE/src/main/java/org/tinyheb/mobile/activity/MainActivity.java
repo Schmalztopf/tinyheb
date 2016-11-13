@@ -2,7 +2,7 @@ package org.tinyheb.mobile.activity;
 
 import org.tinyheb.mobile.R;
 import org.tinyheb.mobile.WiFiReceiver;
-import org.tinyheb.mobile.data.rest.TinyhebAPIClient;
+import org.tinyheb.mobile.data.rest.ApiSearcher;
 import org.tinyheb.mobile.service.APIGetAllDataService;
 
 import android.content.Intent;
@@ -11,12 +11,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class MainActivity extends AbstractActivity implements TinyhebAPIClient.Listener, WiFiReceiver.Listener {
+public class MainActivity extends AbstractActivity implements ApiSearcher.Listener, WiFiReceiver.Listener {
 
 	private Button btnSynchronisation;
 	private WiFiReceiver wifiStatusReceiver;
 	private IntentFilter wifiFilter;
-	private TinyhebAPIClient client;
+	private ApiSearcher client;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,24 +24,8 @@ public class MainActivity extends AbstractActivity implements TinyhebAPIClient.L
 		setContentView(R.layout.activity_main);
 		btnSynchronisation = (Button) findViewById(R.id.btnStartSync);
 		wifiFilter = new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION);
+		client = new ApiSearcher(this);
 		addWifiReceiver();
-		client = new TinyhebAPIClient();
-	}
-
-	public WiFiReceiver getWifiStatusReceiver() {
-		return wifiStatusReceiver;
-	}
-
-	public void setWifiStatusReceiver(WiFiReceiver wifiStatusReceiver) {
-		this.wifiStatusReceiver = wifiStatusReceiver;
-	}
-
-	public TinyhebAPIClient getClient() {
-		return client;
-	}
-
-	public void setClient(TinyhebAPIClient client) {
-		this.client = client;
 	}
 
 	@Override
@@ -91,9 +75,6 @@ public class MainActivity extends AbstractActivity implements TinyhebAPIClient.L
 		startService(intent);
 	}
 
-
-
-
 	@Override
 	public void onAPIServerFound() {
 		runOnUiThread(new Runnable() {
@@ -115,13 +96,12 @@ public class MainActivity extends AbstractActivity implements TinyhebAPIClient.L
 	}
 
 	@Override
-	public void onAPIWifiConnected() {
-		client.setListener(this);
+	public void onWifiConnected() {
 		client.checkURL();
 	}
 
 	@Override
-	public void onAPIWifiDisconnected() {
+	public void onWifiDisconnected() {
 		btnSynchronisation.setVisibility(View.VISIBLE);
 	}
 }

@@ -2,14 +2,12 @@ package org.tinyheb.mobile.service;
 
 import java.util.List;
 
-import org.json.JSONObject;
 import org.tinyheb.core.HealthInsurance;
 import org.tinyheb.core.Patron;
 import org.tinyheb.core.TinyhebDataContainer;
 import org.tinyheb.mobile.TinyhebApp;
-import org.tinyheb.mobile.data.rest.TinyhebRestClient;
+import org.tinyheb.mobile.data.rest.ApiRestClient;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
 import android.app.Service;
@@ -20,7 +18,8 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
 import android.widget.Toast;
-import cz.msebera.android.httpclient.Header;
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class APIGetAllDataService extends Service {
@@ -29,6 +28,19 @@ public class APIGetAllDataService extends Service {
 	}
 	private Looper mServiceLooper;
 	private ServiceHandler mServiceHandler;
+    private Callback<TinyhebDataContainer> callback = new Callback<TinyhebDataContainer>() {
+		@Override
+		public void onResponse(Call<TinyhebDataContainer> call, Response<TinyhebDataContainer> response) {
+			TinyhebDataContainer alldata = (TinyhebDataContainer) response.body();
+			writeClient(alldata.patrons, Patron.class);
+			writeClient(alldata.insurances, HealthInsurance.class);
+		}
+		
+		@Override
+		public void onFailure(Call<TinyhebDataContainer> call, Throwable t) {
+			Toast.makeText(getBaseContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+		}
+	};
 
 	@Override
 	public void onCreate() {
@@ -51,7 +63,7 @@ public class APIGetAllDataService extends Service {
 		return START_STICKY;
 	}
 
-	private final class ServiceHandler extends Handler implements TinyhebRestClient.HttpListener {
+	private final class ServiceHandler extends Handler {
 
 		public ServiceHandler(Looper looper) {
 			super(looper);
@@ -59,32 +71,9 @@ public class APIGetAllDataService extends Service {
 
 		@Override
 		public void handleMessage(final Message msg) {
-			new TinyhebRestClient(this).get();
+			new ApiRestClient()
+			.get(callback);
 		}
-
-		@Override
-		public void onFailure(String errorMessage) {
-			Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
-		}
-
-		@Override
-		public void onSuccess(int statusCode, Header[] headers, JSONObject response) throws Exception {
-			TinyhebDataContainer alldata = new TinyhebDataContainer();
-
-			ObjectMapper mapper = new ObjectMapper();
-			alldata = mapper.readValue(response.toString(), TinyhebDataContainer.class);
-			writeClient(alldata.patrons, Patron.class);
-			writeClient(alldata.insurances, HealthInsurance.class);
-
-		}
-
-		@Override
-		public void onsuccess(Response<Patron> response) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-
 	}
 
 	@Override

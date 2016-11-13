@@ -9,7 +9,7 @@ import org.tinyheb.core.Patron;
 import org.tinyheb.core.TinyhebDataContainer;
 import org.tinyheb.mobile.R;
 import org.tinyheb.mobile.data.sqlite.SQLiteDBHelper;
-import org.tinyheb.mobile.viewbinding.TinyExpandableListView;
+import org.tinyheb.mobile.viewbinding.PatronExpandableListView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 import com.j256.ormlite.dao.RuntimeExceptionDao;
@@ -55,7 +55,7 @@ public class MasterDataPagerActivity extends AbstractActivity {
 		initializeContentView(R.layout.activity_master_data_pager, masterdata);
 
 
-		TinyExpandableListView listview1 = (TinyExpandableListView) findViewById(R.id.PatronsListView);
+		PatronExpandableListView listview1 = (PatronExpandableListView) findViewById(R.id.PatronsListView);
 		ListView listview2 = new ListView(this);
 
 		Vector<View> pages = new Vector<View>();

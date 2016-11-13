@@ -17,7 +17,6 @@ public abstract class AbstractActivity extends Activity {
 	
 	protected TimeZone currentTimezone = TimeZone.getTimeZone("Europe/Berlin");
 	protected Locale currentLocale = new Locale("de-DE");
-
 	protected SQLiteDBHelper dbHelper = null;
 	
 	public void initializeContentView(int layoutId, Object presentationModel) {

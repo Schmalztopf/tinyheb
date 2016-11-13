@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.tinyheb.core.Patron;
 import org.tinyheb.mobile.R;
-import org.tinyheb.mobile.activity.PatronExpandableListAdapter;
 import org.tinyheb.mobile.activity.PatronInsertActivity;
 import org.tinyheb.mobile.service.WritePatronService;
 
@@ -15,26 +14,38 @@ import android.content.Intent;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ExpandableListView;
-import android.widget.ListAdapter;
 
-public class TinyExpandableListView extends ExpandableListView {
-	List<Patron> source;
-	final Context baseContext;
+public class PatronExpandableListView extends ExpandableListView {
+	private List<Patron> source;
+	private final Context baseContext;
+	private int lastExpandedPosition = -1;
 
-	public TinyExpandableListView(Context context, AttributeSet attrs) {
+	public PatronExpandableListView(Context context, AttributeSet attrs) {
 		this(context, attrs, R.layout.listitem_id_name, R.layout.listitem_singletext); 
 	}
 
-	public TinyExpandableListView(Context context, AttributeSet attrs, int itemlayoutid, int grouplayoutid) {
+	public PatronExpandableListView(Context context, AttributeSet attrs, int itemlayoutid, int grouplayoutid) {
 		super(context, attrs); 
 		this.baseContext = context;
 		LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		inflater.inflate(grouplayoutid, this, false);
 
 		setSource(new ArrayList<Patron>());
-		
+
+		this.setOnGroupExpandListener(new OnGroupExpandListener() {
+
+		    @Override
+		    public void onGroupExpand(int groupPosition) {
+		            if (lastExpandedPosition != -1
+		                    && groupPosition != lastExpandedPosition) {
+		                collapseGroup(lastExpandedPosition);
+		            }
+		            lastExpandedPosition = groupPosition;
+		    }
+		});
+
+
 		this.setOnChildClickListener(new OnChildClickListener() {
 
 			@Override

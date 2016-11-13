@@ -1,4 +1,4 @@
-package org.tinyheb.mobile.data;
+package org.tinyheb.utils;
 
 import java.io.IOException;
 import java.sql.SQLException;

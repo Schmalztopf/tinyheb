@@ -4,7 +4,7 @@ import org.robobinding.binder.BinderFactory;
 import org.robobinding.binder.BinderFactoryBuilder;
 import org.tinyheb.mobile.data.sqlite.SQLiteDBHelper;
 import org.tinyheb.mobile.viewbinding.ExpandableListViewBinding;
-import org.tinyheb.mobile.viewbinding.TinyExpandableListView;
+import org.tinyheb.mobile.viewbinding.PatronExpandableListView;
 
 import com.j256.ormlite.android.apptools.OpenHelperManager;
 
@@ -19,7 +19,7 @@ public class TinyhebApp extends Application {
 		super.onCreate();
 
 		reusableBinderFactory = new BinderFactoryBuilder()
-				.add(new ExpandableListViewBinding().forView(TinyExpandableListView.class))
+				.add(new ExpandableListViewBinding().forView(PatronExpandableListView.class))
 				.build();
 		reusableBinderFactory.createViewBinder(this);
 	}

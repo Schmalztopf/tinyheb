@@ -1,9 +1,8 @@
 package org.tinyheb.mobile.service;
 
-import org.json.JSONObject;
 import org.tinyheb.core.Patron;
 import org.tinyheb.mobile.TinyhebApp;
-import org.tinyheb.mobile.data.rest.TinyhebRestClient;
+import org.tinyheb.mobile.data.rest.ApiRestClient;
 
 import com.j256.ormlite.dao.RuntimeExceptionDao;
 
@@ -17,7 +16,8 @@ import android.os.Looper;
 import android.os.Message;
 import android.support.v4.content.LocalBroadcastManager;
 import android.widget.Toast;
-import cz.msebera.android.httpclient.Header;
+import retrofit2.Call;
+import retrofit2.Callback;
 import retrofit2.Response;
 
 public class WritePatronService extends Service {
@@ -27,6 +27,20 @@ public class WritePatronService extends Service {
 	private RuntimeExceptionDao<Patron, Long> patronDao;
 	private Patron writePatron;
 	private static Context context;
+    private Callback<Patron> callback = new Callback<Patron>() {
+		@Override
+		public void onResponse(Call<Patron> call, Response<Patron> response) {
+			patronDao.update( response.body());
+			patronDao.delete(writePatron);
+			Toast.makeText(getBaseContext(), "success", Toast.LENGTH_SHORT).show();
+			sendMessageToActivity();
+		}
+		
+		@Override
+		public void onFailure(Call<Patron> call, Throwable t) {
+			Toast.makeText(getBaseContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+		}
+	};
 
 	@Override
 	public void onCreate() {
@@ -55,7 +69,7 @@ public class WritePatronService extends Service {
 		return START_STICKY;
 	}
 
-	private final class ServiceHandler extends Handler implements TinyhebRestClient.HttpListener {
+	private final class ServiceHandler extends Handler {
 
 		public ServiceHandler(Looper looper) {
 			super(looper);
@@ -65,30 +79,14 @@ public class WritePatronService extends Service {
 		public void handleMessage(final Message msg) {
 			try {
 				if (writePatron.getId() < 0 ) {
-					new TinyhebRestClient(this).writePatron(writePatron);
+					new ApiRestClient().writePatron(writePatron, callback);;
 				}
 			} catch (Exception e) {
 				stopSelf();
 			}
 		}
 
-		@Override
-		public void onFailure(String errorMessage) {
-			Toast.makeText(getBaseContext(), errorMessage, Toast.LENGTH_SHORT).show();
-		}
 
-		@Override
-		public void onSuccess(int statusCode, Header[] headers, JSONObject response) throws Exception {
-
-		}
-
-		@Override
-		public void onsuccess(Response<Patron> response) {
-			patronDao.update(response.body());
-			patronDao.delete(writePatron);
-			Toast.makeText(getBaseContext(), "success", Toast.LENGTH_SHORT).show();
-			sendMessageToActivity();
-		}
 
 	}
 

@@ -5,6 +5,6 @@ import org.robobinding.customviewbinding.CustomViewBinding;
 
 
 @ViewBinding(simpleOneWayProperties = {"source"})
-public class ExpandableListViewBinding  extends CustomViewBinding<TinyExpandableListView>  {
+public class ExpandableListViewBinding  extends CustomViewBinding<PatronExpandableListView>  {
 	
 }

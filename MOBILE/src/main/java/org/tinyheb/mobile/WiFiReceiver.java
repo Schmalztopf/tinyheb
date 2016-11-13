@@ -12,9 +12,9 @@ public class WiFiReceiver extends BroadcastReceiver {
 
 	public interface Listener {
 
-		public void onAPIWifiConnected();
+		public void onWifiConnected();
 
-		public void onAPIWifiDisconnected();
+		public void onWifiDisconnected();
 	}
 
 	public void setListener(Listener listener) {
@@ -27,12 +27,12 @@ public class WiFiReceiver extends BroadcastReceiver {
 		NetworkInfo netInfo = conMan.getActiveNetworkInfo();
 		if (netInfo != null && netInfo.getType() == ConnectivityManager.TYPE_WIFI)
 			if (netInfo.isConnectedOrConnecting()) {
-				listener.onAPIWifiConnected();
+				listener.onWifiConnected();
 				return;
 			} 
 
 
-		listener.onAPIWifiDisconnected();
+		listener.onWifiDisconnected();
 	}
 
 };

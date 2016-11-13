@@ -98,7 +98,7 @@ public class WiFiReceiverTest {
 
     private void verifyDisconnected() {
         try {
-            verify(wifiReceiverInstance.listener).onAPIWifiDisconnected();
+            verify(wifiReceiverInstance.listener).onWifiDisconnected();
         } catch (MockitoAssertionError e) {
             throw new MockitoAssertionError("Was expecting a call to onAPIWifiDisconnected() but got " + e.getMessage());
         }
@@ -106,7 +106,7 @@ public class WiFiReceiverTest {
 
     private void verifyConnected() {
         try {
-            verify(wifiReceiverInstance.listener).onAPIWifiConnected();
+            verify(wifiReceiverInstance.listener).onWifiConnected();
         } catch (MockitoAssertionError e) {
             throw new MockitoAssertionError("Was expecting a call to onAPIWifiConnected() but got " + e.getMessage());
         }
