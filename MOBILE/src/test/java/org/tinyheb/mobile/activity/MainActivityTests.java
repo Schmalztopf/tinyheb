@@ -1,4 +1,4 @@
-package org.tinyheb.mobile;
+package org.tinyheb.mobile.activity;
 
 import static org.junit.Assert.assertEquals;
 
@@ -9,6 +9,7 @@ import org.mockito.MockitoAnnotations;
 import org.robolectric.Robolectric;
 import org.robolectric.Shadows;
 import org.robolectric.annotation.Config;
+import org.tinyheb.mobile.R;
 import org.tinyheb.mobile.activity.MainActivity;
 import org.tinyheb.mobile.activity.MasterDataPagerActivity;
 import org.tinyheb.mobile.activity.PatronInsertActivity;

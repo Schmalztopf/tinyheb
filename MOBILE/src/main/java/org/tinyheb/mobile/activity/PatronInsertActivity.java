@@ -7,7 +7,7 @@ import org.tinyheb.core.DateFormatter;
 import org.tinyheb.core.HealthInsurance;
 import org.tinyheb.core.Patron;
 import org.tinyheb.mobile.R;
-import org.tinyheb.mobile.dialogs.MonthYearPickerDialog;
+import org.tinyheb.mobile.fragments.MonthYearPickerDialog;
 import org.tinyheb.mobile.presentation.PatronEditPresentation;
 
 import android.app.DatePickerDialog;

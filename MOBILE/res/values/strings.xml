@@ -35,6 +35,9 @@
     <string name="calculated_birthdate_text">errechneter Termin</string>
     <string name="true_birthdate_text">Geburtstermin</string>
     <string name="time_of_birth_hint">Zeit</string>
+    
+    <string name="prev_server_dialog_title">API Server</string>
+    <string name="prev_server_dialog_message">API Server eingeben</string>
 
     <string-array name="number_of_children">
         <item>1</item>

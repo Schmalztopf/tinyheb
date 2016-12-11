@@ -1,4 +1,4 @@
-package org.tinyheb.mobile.dialogs;
+package org.tinyheb.mobile.fragments;
 
 import java.util.Calendar;
 
@@ -17,6 +17,9 @@ import android.widget.NumberPicker;
 public class MonthYearPickerDialog  extends DialogFragment {
 
 	  private static final int MAX_YEAR = 2099;
+	  private View dialog;
+	  private NumberPicker monthPicker;
+	  private NumberPicker yearPicker;
 	  private DatePickerDialog.OnDateSetListener listener;
 
 	  public void setListener(DatePickerDialog.OnDateSetListener listener) {
@@ -30,19 +33,11 @@ public class MonthYearPickerDialog  extends DialogFragment {
 	    LayoutInflater inflater = getActivity().getLayoutInflater();
 
 	    Calendar cal = Calendar.getInstance();
-
-	    View dialog = inflater.inflate(R.layout.date_picker_dialog, null);
-	    final NumberPicker monthPicker = (NumberPicker) dialog.findViewById(R.id.picker_month);
-	    final NumberPicker yearPicker = (NumberPicker) dialog.findViewById(R.id.picker_year);
-
-	    monthPicker.setMinValue(1);
-	    monthPicker.setMaxValue(12);
-	    monthPicker.setValue(cal.get(Calendar.MONTH) + 1);
-
-	    int year = cal.get(Calendar.YEAR);
-	    yearPicker.setMinValue(year);
-	    yearPicker.setMaxValue(MAX_YEAR);
-	    yearPicker.setValue(year);
+	    dialog = inflater.inflate(R.layout.date_picker_dialog, null);
+	    yearPicker = (NumberPicker) dialog.findViewById(R.id.picker_year);
+	    
+	    setMonthRange(1, 12, cal.get(Calendar.MONTH) + 1);
+	    setYearRange(cal.get(Calendar.YEAR), MAX_YEAR, cal.get(Calendar.YEAR));
 
 	    builder.setView(dialog)
 	        // Add action buttons
@@ -59,4 +54,26 @@ public class MonthYearPickerDialog  extends DialogFragment {
 	        });
 	    return builder.create();
 	  }
+
+	public void setMonthRange(int min, int max, int selected) {
+
+	    monthPicker = (NumberPicker) dialog.findViewById(R.id.picker_month);
+	    monthPicker.setMinValue(min);
+	    monthPicker.setMaxValue(max);
+	    monthPicker.setValue(selected);
+	}
+	
+	public void setYearRange(int min, int max, int selected) {
+		yearPicker.setMinValue(min);
+		yearPicker.setMaxValue(max);
+		yearPicker.setValue(selected);
+	}
+
+	public NumberPicker getMonthPicker() {
+		return monthPicker;
+	}
+
+	public NumberPicker getYearPicker() {
+		return yearPicker;
+	}
 }
