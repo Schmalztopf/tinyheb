@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Suite]">
+  <test name="JUnitTests(failed)" junit="true">
+    <classes>
+      <class name="org.tinyheb.utils.ServerAdressResolverTest">
+        <methods>
+          <include name="setUp"/>
+        </methods>
+      </class> <!-- org.tinyheb.utils.ServerAdressResolverTest -->
+      <class name="org.tinyheb.mobile.activity.MainActivityTests">
+        <methods>
+          <include name="testStartSynchronizeButton"/>
+          <include name="testStartPatronShowButton"/>
+          <include name="testAPIServerSearchResultHandling"/>
+          <include name="testStartPatronInsertButton"/>
+          <include name="testWifiConnectionChangeEventHandling"/>
+        </methods>
+      </class> <!-- org.tinyheb.mobile.activity.MainActivityTests -->
+    </classes>
+  </test> <!-- JUnitTests(failed) -->
+</suite> <!-- Failed suite [Suite] -->

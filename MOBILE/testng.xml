@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test name="NGTests">
+    <classes>
+      <class name="org.tinyheb.utils.ServerAdressResolverTest"/>
+    </classes>
+  </test> <!-- Test -->
+  <test name="JUnitTests" junit="true" >
+    <classes>
+      <class name="org.tinyheb.mobile.activity.MainActivityTests"/>
+      <class name="org.tinyheb.mobile.WiFiReceiverTest"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

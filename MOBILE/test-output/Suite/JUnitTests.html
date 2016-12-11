@@ -1,0 +1,492 @@
+<html>
+<head>
+<title>TestNG:  JUnitTests</title>
+<link href="../testng.css" rel="stylesheet" type="text/css" />
+<link href="../my-testng.css" rel="stylesheet" type="text/css" />
+
+<style type="text/css">
+.log { display: none;} 
+.stack-trace { display: none;} 
+</style>
+<script type="text/javascript">
+<!--
+function flip(e) {
+  current = e.style.display;
+  if (current == 'block') {
+    e.style.display = 'none';
+    return 0;
+  }
+  else {
+    e.style.display = 'block';
+    return 1;
+  }
+}
+
+function toggleBox(szDivId, elem, msg1, msg2)
+{
+  var res = -1;  if (document.getElementById) {
+    res = flip(document.getElementById(szDivId));
+  }
+  else if (document.all) {
+    // this is the way old msie versions work
+    res = flip(document.all[szDivId]);
+  }
+  if(elem) {
+    if(res == 0) elem.innerHTML = msg1; else elem.innerHTML = msg2;
+  }
+
+}
+
+function toggleAllBoxes() {
+  if (document.getElementsByTagName) {
+    d = document.getElementsByTagName('div');
+    for (i = 0; i < d.length; i++) {
+      if (d[i].className == 'log') {
+        flip(d[i]);
+      }
+    }
+  }
+}
+
+// -->
+</script>
+
+</head>
+<body>
+<h2 align='center'>JUnitTests</h2><table border='1' align="center">
+<tr>
+<td>Tests passed/Failed/Skipped:</td><td>5/5/0</td>
+</tr><tr>
+<td>Started on:</td><td>Sun Nov 27 16:10:03 CET 2016</td>
+</tr>
+<tr><td>Total time:</td><td>5 seconds (5332 ms)</td>
+</tr><tr>
+<td>Included groups:</td><td></td>
+</tr><tr>
+<td>Excluded groups:</td><td></td>
+</tr>
+</table><p/>
+<small><i>(Hover the method name to see the test class name)</i></small><p/>
+<table width='100%' border='1' class='invocation-failed'>
+<tr><td colspan='4' align='center'><b>FAILED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='org.tinyheb.mobile.activity.MainActivityTests.testAPIServerSearchResultHandling()'><b>testAPIServerSearchResultHandling</b><br>Test class: org.tinyheb.mobile.activity.MainActivityTests</td>
+<td><div><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace971936990", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace971936990'><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:689)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1014)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:720)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1191)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)
+	at org.testng.TestNG.run(TestNG.java:1024)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>testAPIServerSearchResultHandling(org.tinyheb.mobile.activity.MainActivityTests)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.activity.MainActivityTests.testStartPatronInsertButton()'><b>testStartPatronInsertButton</b><br>Test class: org.tinyheb.mobile.activity.MainActivityTests</td>
+<td><div><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1515477775", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1515477775'><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:689)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1014)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:720)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1191)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)
+	at org.testng.TestNG.run(TestNG.java:1024)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>testStartPatronInsertButton(org.tinyheb.mobile.activity.MainActivityTests)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.activity.MainActivityTests.testStartPatronShowButton()'><b>testStartPatronShowButton</b><br>Test class: org.tinyheb.mobile.activity.MainActivityTests</td>
+<td><div><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1706741895", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1706741895'><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:689)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1014)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:720)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1191)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)
+	at org.testng.TestNG.run(TestNG.java:1024)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>3</td>
+<td>testStartPatronShowButton(org.tinyheb.mobile.activity.MainActivityTests)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.activity.MainActivityTests.testStartSynchronizeButton()'><b>testStartSynchronizeButton</b><br>Test class: org.tinyheb.mobile.activity.MainActivityTests</td>
+<td><div><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace227549952", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace227549952'><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:689)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1014)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:720)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1191)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)
+	at org.testng.TestNG.run(TestNG.java:1024)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>testStartSynchronizeButton(org.tinyheb.mobile.activity.MainActivityTests)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.activity.MainActivityTests.testWifiConnectionChangeEventHandling()'><b>testWifiConnectionChangeEventHandling</b><br>Test class: org.tinyheb.mobile.activity.MainActivityTests</td>
+<td><div><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+... Removed 18 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace943501193", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace943501193'><pre>android.content.res.Resources$NotFoundException: String resource ID #0x7f080000
+	at android.content.res.Resources.getText(Resources.java:312)
+	at android.content.res.Resources.getString(Resources.java:400)
+	at android.content.Context.getString(Context.java:409)
+	at org.robolectric.util.ActivityController.getActivityTitle(ActivityController.java:113)
+	at org.robolectric.util.ActivityController.attach(ActivityController.java:61)
+	at org.robolectric.util.ActivityController.of(ActivityController.java:32)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:92)
+	at org.robolectric.Robolectric.buildActivity(Robolectric.java:88)
+	at org.tinyheb.mobile.activity.MainActivityTests.setUp(MainActivityTests.java:32)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:24)
+	at org.robolectric.RobolectricTestRunner$2.evaluate(RobolectricTestRunner.java:250)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:176)
+	at org.robolectric.RobolectricTestRunner.runChild(RobolectricTestRunner.java:49)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.robolectric.RobolectricTestRunner$1.evaluate(RobolectricTestRunner.java:142)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:137)
+	at org.junit.runner.JUnitCore.run(JUnitCore.java:115)
+	at org.testng.junit.JUnit4TestRunner.start(JUnit4TestRunner.java:81)
+	at org.testng.junit.JUnit4TestRunner.run(JUnit4TestRunner.java:69)
+	at org.testng.TestRunner$1.run(TestRunner.java:689)
+	at org.testng.TestRunner.runWorkers(TestRunner.java:1014)
+	at org.testng.TestRunner.privateRunJUnit(TestRunner.java:720)
+	at org.testng.TestRunner.run(TestRunner.java:621)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:359)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:354)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:312)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:261)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1191)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1116)
+	at org.testng.TestNG.run(TestNG.java:1024)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:132)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:236)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:81)
+</pre></div></td>
+<td>0</td>
+<td>testWifiConnectionChangeEventHandling(org.tinyheb.mobile.activity.MainActivityTests)</td></tr>
+</table><p>
+<table width='100%' border='1' class='invocation-passed'>
+<tr><td colspan='4' align='center'><b>PASSED TESTS</b></td></tr>
+<tr><td><b>Test method</b></td>
+<td width="30%"><b>Exception</b></td>
+<td width="10%"><b>Time (seconds)</b></td>
+<td><b>Instance</b></td>
+</tr>
+<tr>
+<td title='org.tinyheb.mobile.WiFiReceiverTest.testOnReceiveConnectedWifiStateOnWifiConnected()'><b>testOnReceiveConnectedWifiStateOnWifiConnected</b><br>Test class: org.tinyheb.mobile.WiFiReceiverTest</td>
+<td></td>
+<td>0</td>
+<td>testOnReceiveConnectedWifiStateOnWifiConnected(org.tinyheb.mobile.WiFiReceiverTest)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.WiFiReceiverTest.testOnReceiveDisconnectedOtherNetworkState()'><b>testOnReceiveDisconnectedOtherNetworkState</b><br>Test class: org.tinyheb.mobile.WiFiReceiverTest</td>
+<td></td>
+<td>0</td>
+<td>testOnReceiveDisconnectedOtherNetworkState(org.tinyheb.mobile.WiFiReceiverTest)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.WiFiReceiverTest.testOnReceiveDisconnectedWifiStateOnWifiDisConnected()'><b>testOnReceiveDisconnectedWifiStateOnWifiDisConnected</b><br>Test class: org.tinyheb.mobile.WiFiReceiverTest</td>
+<td></td>
+<td>0</td>
+<td>testOnReceiveDisconnectedWifiStateOnWifiDisConnected(org.tinyheb.mobile.WiFiReceiverTest)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.WiFiReceiverTest.testOnReceiveDisconnectedWifiStateOnWifiDisabled()'><b>testOnReceiveDisconnectedWifiStateOnWifiDisabled</b><br>Test class: org.tinyheb.mobile.WiFiReceiverTest</td>
+<td></td>
+<td>0</td>
+<td>testOnReceiveDisconnectedWifiStateOnWifiDisabled(org.tinyheb.mobile.WiFiReceiverTest)</td></tr>
+<tr>
+<td title='org.tinyheb.mobile.WiFiReceiverTest.testSetListener()'><b>testSetListener</b><br>Test class: org.tinyheb.mobile.WiFiReceiverTest</td>
+<td></td>
+<td>1</td>
+<td>testSetListener(org.tinyheb.mobile.WiFiReceiverTest)</td></tr>
+</table><p>
+</body>
+</html>
