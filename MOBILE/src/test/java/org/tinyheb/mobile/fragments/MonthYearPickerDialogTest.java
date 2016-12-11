@@ -1,23 +1,20 @@
 package org.tinyheb.mobile.fragments;
 
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeMethod;
-import org.testng.AssertJUnit;
+import org.junit.Before;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.robolectric.Robolectric;
-import org.robolectric.RuntimeEnvironment;
 import org.robolectric.annotation.Config;
-import org.tinyheb.mobile.R;
-import org.tinyheb.mobile.activity.MainActivity;
+import org.testng.AssertJUnit;
+import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 import org.tinyheb.test.TinyhebTestRunner;
 
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
-import android.content.SharedPreferences;
 import android.widget.NumberPicker;
 
 @Config(sdk = 23)
@@ -29,7 +26,7 @@ public class MonthYearPickerDialogTest {
 	
 	private Activity activity;
 
-	@BeforeMethod
+	@Before
 	public void setUp() throws Exception {
 		if (activity == null) {
 			activity = Robolectric.buildActivity(Activity.class).create().start().visible().get();

@@ -30,8 +30,8 @@ public class TinyhebTestRunner extends RobolectricTestRunner {
                 .getPath();
         String myAppPathRoot = myAppPath.substring(0, myAppPath.indexOf("/target"));
         String manifestPath = myAppPathRoot + "/src/main/AndroidManifest.xml";
-        String resPath = myAppPathRoot + "/src/main/res";
-        String assetPath = myAppPathRoot + "/src/main/assets";
+        String resPath = myAppPathRoot + "/res";
+        String assetPath = myAppPathRoot + "/assets";
         
 
         System.setProperty("android.package", "org.tinyheb.mobile");

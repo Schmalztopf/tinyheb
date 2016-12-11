@@ -102,6 +102,6 @@ public class MainActivity extends AbstractActivity implements ApiSearcher.Listen
 
 	@Override
 	public void onWifiDisconnected() {
-		btnSynchronisation.setVisibility(View.VISIBLE);
+		btnSynchronisation.setVisibility(View.GONE);
 	}
 }
