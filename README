@@ -5,7 +5,7 @@ gegenüber den gesetzlichen Krankenkassen durchführen können.
 tinyHeb kann sowohl Papier, wie auch elektronische Rechnungen produzieren.
 Die gesetzlichen Anforderungen nach §301a, resp. §302 SGB V werden eingehalten.
 
-<< 1. Installation >>
+<< 1. Installation Basissystem Package BASE>>
 In diesem Abschnitt ist die Installation für Linux Systeme beschrieben,
 Win* Nutzer lesen bitte die Installationshinweise in der Datei README.win
 
@@ -72,15 +72,25 @@ existiert das Programm xauftrag.pl im Verzeichnis edifact.
 	des Handbuches beschrieben anzupassen, damit z.B. der
 	wirkliche Name der Hebamme auf der Rechnung erscheint.
 
+<< 2. Tinyheb Mobile >>
 
+Dieses Update ermöglicht es einige Daten von einem Android Gerät aus nach Tinyheb einzugeben
 
-<< 2. Änderungshistorie >>
+<< Package API >>
+
+Zur Installation auf Tomcat Server (.war file aus bin). Schnittstelle zu PRD_Hebamme (Tinyheb Datenbank)
+
+<< Package Mobile >>
+
+Zur Installation auf Android Device (.apk).
+
+<< 3. Änderungshistorie >>
 Die Änderungshistorie befindet sich in der Datei RelNotes.txt
 
-<< 3. zusätzliche Programme >>
+<< 4. zusätzliche Programme >>
 OpenSSL muss installiert sein, wenn man verschlüsselte Rechnungen erzeugen möchte
 
-<< 4. Fragen >>
+<< 5. Fragen >>
 wenn es Probleme bei der Installation geben sollte, schreibt mir eine Mail:
 thomas.baum@arcor.de
 
