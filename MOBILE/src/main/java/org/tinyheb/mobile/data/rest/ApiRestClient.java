@@ -15,7 +15,7 @@ import retrofit2.converter.jackson.JacksonConverterFactory;
 
 public class ApiRestClient {
 
-	private static final String BASE_URL = "http://192.168.0.102:8080/";
+	private static final String BASE_URL = "http://api-server-address:8080/";
 	private IApiService apiService;
 	private ObjectMapper mapper;
 	private Retrofit retrofit;

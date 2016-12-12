@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <item
+        android:id="@+id/insertPatron"
+        android:icon="@drawable/ic_menu"
+        android:showAsAction="never"
+        android:title="@string/insert_patrons"/>
+    <item
+        android:id="@+id/showPatrons"
+        android:icon="@drawable/ic_menu"
+        android:showAsAction="never"
+        android:title="@string/patrons"/>
+    <item
+        android:id="@+id/Settings"
+        android:icon="@drawable/ic_menu"
+        android:showAsAction="never"
+        android:title="@string/prev_server_dialog_title"/>
+
+</menu>

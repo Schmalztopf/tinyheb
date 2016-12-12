@@ -2,7 +2,6 @@ package org.tinyheb.mobile.activity;
 
 import org.tinyheb.mobile.fragments.SettingsFragment;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 public class SettingsActivity extends AbstractActivity {

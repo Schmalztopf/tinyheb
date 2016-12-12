@@ -21,50 +21,52 @@ public final class R {
         public static final int circle_green=0x7f020000;
         public static final int circle_red=0x7f020001;
         public static final int ic_launcher=0x7f020002;
-        public static final int list_selector_background=0x7f020003;
+        public static final int ic_menu=0x7f020003;
+        public static final int list_selector_background=0x7f020004;
     }
     public static final class id {
-        public static final int AddressLayout=0x7f0b0008;
-        public static final int AdressInputButton=0x7f0b0007;
-        public static final int BirthInputLayout=0x7f0b0017;
-        public static final int BirthdayLabelTextView=0x7f0b000d;
-        public static final int ChildBirthInputButton=0x7f0b0016;
-        public static final int ChildBirthLabelTextView=0x7f0b0018;
-        public static final int CityEditText=0x7f0b000b;
-        public static final int DistanceEditText=0x7f0b000e;
-        public static final int FirstnameTextView=0x7f0b0005;
-        public static final int IkInsuranceAgencyAutoCompleteTextView=0x7f0b0012;
-        public static final int IkInsuranceHolderEditText=0x7f0b0011;
-        public static final int IkInsuranceValidUntilEditText=0x7f0b0014;
-        public static final int InsuranceDataTextView=0x7f0b0013;
-        public static final int InsuranceInputButton=0x7f0b000f;
-        public static final int InsuranceLayout=0x7f0b0010;
-        public static final int InsuranceStatusSpinner=0x7f0b0015;
-        public static final int LastnameTextview=0x7f0b0006;
-        public static final int MainScrollView=0x7f0b0004;
-        public static final int PatronsListView=0x7f0b0003;
-        public static final int PhoneEditText=0x7f0b000c;
-        public static final int PostalCodeEditText=0x7f0b000a;
-        public static final int SavePatronButton=0x7f0b001e;
-        public static final int StreetTextView=0x7f0b0009;
-        public static final int TimeOfBirthTextView=0x7f0b0019;
-        public static final int TypeOfBirthdateRadioGroup=0x7f0b001a;
-        public static final int bottomtext=0x7f0b0028;
-        public static final int btnAbort=0x7f0b001f;
-        public static final int btnInsertPatrons=0x7f0b0001;
-        public static final int btnShowPatrons=0x7f0b0000;
-        public static final int btnStartSync=0x7f0b0002;
-        public static final int lblFirstname=0x7f0b0025;
-        public static final int lblId=0x7f0b0023;
-        public static final int lblLastname=0x7f0b0024;
-        public static final int lblListItem=0x7f0b0026;
-        public static final int picker_month=0x7f0b0020;
-        public static final int picker_year=0x7f0b0021;
-        public static final int rbCalculatedBirthdateOption=0x7f0b001b;
-        public static final int rbTrueBirthdateOption=0x7f0b001c;
-        public static final int spNumberOfChildrenBorn=0x7f0b001d;
-        public static final int toptext=0x7f0b0027;
-        public static final int vwCircle=0x7f0b0022;
+        public static final int AddressLayout=0x7f0c0006;
+        public static final int AdressInputButton=0x7f0c0005;
+        public static final int BirthInputLayout=0x7f0c0015;
+        public static final int BirthdayLabelTextView=0x7f0c000b;
+        public static final int ChildBirthInputButton=0x7f0c0014;
+        public static final int ChildBirthLabelTextView=0x7f0c0016;
+        public static final int CityEditText=0x7f0c0009;
+        public static final int DistanceEditText=0x7f0c000c;
+        public static final int FirstnameTextView=0x7f0c0003;
+        public static final int IkInsuranceAgencyAutoCompleteTextView=0x7f0c0010;
+        public static final int IkInsuranceHolderEditText=0x7f0c000f;
+        public static final int IkInsuranceValidUntilEditText=0x7f0c0012;
+        public static final int InsuranceDataTextView=0x7f0c0011;
+        public static final int InsuranceInputButton=0x7f0c000d;
+        public static final int InsuranceLayout=0x7f0c000e;
+        public static final int InsuranceStatusSpinner=0x7f0c0013;
+        public static final int LastnameTextview=0x7f0c0004;
+        public static final int MainScrollView=0x7f0c0002;
+        public static final int PatronsListView=0x7f0c0001;
+        public static final int PhoneEditText=0x7f0c000a;
+        public static final int PostalCodeEditText=0x7f0c0008;
+        public static final int SavePatronButton=0x7f0c001c;
+        public static final int Settings=0x7f0c0029;
+        public static final int StreetTextView=0x7f0c0007;
+        public static final int TimeOfBirthTextView=0x7f0c0017;
+        public static final int TypeOfBirthdateRadioGroup=0x7f0c0018;
+        public static final int bottomtext=0x7f0c0026;
+        public static final int btnAbort=0x7f0c001d;
+        public static final int btnStartSync=0x7f0c0000;
+        public static final int insertPatron=0x7f0c0027;
+        public static final int lblFirstname=0x7f0c0023;
+        public static final int lblId=0x7f0c0021;
+        public static final int lblLastname=0x7f0c0022;
+        public static final int lblListItem=0x7f0c0024;
+        public static final int picker_month=0x7f0c001e;
+        public static final int picker_year=0x7f0c001f;
+        public static final int rbCalculatedBirthdateOption=0x7f0c0019;
+        public static final int rbTrueBirthdateOption=0x7f0c001a;
+        public static final int showPatrons=0x7f0c0028;
+        public static final int spNumberOfChildrenBorn=0x7f0c001b;
+        public static final int toptext=0x7f0c0025;
+        public static final int vwCircle=0x7f0c0020;
     }
     public static final class integer {
         public static final int address_input_linenumber=0x7f070000;
@@ -80,6 +82,9 @@ public final class R {
         public static final int patron_list=0x7f030006;
         public static final int row=0x7f030007;
         public static final int string_item_layout=0x7f030008;
+    }
+    public static final class menu {
+        public static final int main=0x7f0b0000;
     }
     public static final class raw {
         public static final int ormlite_config=0x7f050000;

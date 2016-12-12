@@ -59,22 +59,6 @@ public class MainActivity extends AbstractActivity implements ApiSearcher.Listen
 		}
 	}
 
-
-	public void showPatrons(View view) {
-		Intent MasterdataIntent = new Intent(this, MasterDataPagerActivity.class);
-
-		startActivity(MasterdataIntent);
-	}
-
-	public void insertPatrons(View view) {
-		startActivity(new Intent(this, PatronInsertActivity.class));
-	}
-
-	public void startSync(View view) {
-		Intent intent = new Intent(this, APIGetAllDataService.class);
-		startService(intent);
-	}
-
 	@Override
 	public void onAPIServerFound() {
 		runOnUiThread(new Runnable() {
